@@ -40,7 +40,7 @@ app.set('view-engine', 'ejs');
 //////////////////////// Middlewares //////////////////////////////
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({extended:false}));
 app.use(session({    
   key: 'user_id',
   secret: 'mi palabra secreta',
@@ -62,9 +62,26 @@ if(cluster.isPrimary) {
   // reemplazar workers en caso de que mueran
   cluster.on('exit',() => cluster.fork())
 } else{
-  //////// Rutas ////////
+
+  ////////////// Rutas //////////////
+  app.get('/', (req, res) =>{
+    res.render('home.ejs');
+  });
+
+  app.get('/register', (req, res) =>{
+    res.render('register.ejs');
+  });
+
+  app.post('/register', (req, res) =>{
+    
+  });
+
   app.get('/login', (req, res) =>{
     res.render('login.ejs');
+  });
+  
+  app.post('/login', (req, res) =>{
+    
   });
 
   app.use('/api/productos', routerProductos);
