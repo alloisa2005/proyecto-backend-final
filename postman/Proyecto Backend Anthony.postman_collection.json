@@ -1,0 +1,412 @@
+{
+	"info": {
+		"_postman_id": "2a2aca11-80e6-49f3-a52e-7f02852296a3",
+		"name": "Proyecto Backend Anthony",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5462390"
+	},
+	"item": [
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Get Productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/productos/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								""
+							]
+						},
+						"description": "Devuelve la lista completa de productos"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Productos By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/productos/vWRvrMXWJRoP2VrrEKCS",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								"vWRvrMXWJRoP2VrrEKCS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Playstation 5\",\r\n  \"descripcion\":\"Consola de SONY\",\r\n  \"codigo\":\"SY48025\",\r\n  \"foto\":\"https://http2.mlstatic.com/D_NQ_NP_841787-MLA44484414455_012021-O.webp\",\r\n  \"precio\": 12000,\r\n  \"stock\": 14\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/productos/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre:\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/productos/iu1C5R55O94Eepg3OtRb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								"iu1C5R55O94Eepg3OtRb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/productos/di2auxC7IkksFAjkxXRj",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"productos",
+								"di2auxC7IkksFAjkxXRj"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carrito",
+			"item": [
+				{
+					"name": "Get Carritos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Carrito (Fin Compra)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/63c455f6982cb56de1aa1c0d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"63c455f6982cb56de1aa1c0d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Carrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{      \r\n    \"producto\":\r\n        {\r\n        \"product_id\": \"wGb6qRQ7BtL3hfJQZB7L\",\r\n        \"quantity\": 1,\r\n        \"price\": 380,\r\n        \"nombre\": \"Producto 1\",\r\n        \"descripcion\":\"Desc del producto 1\",\r\n        \"codigo\":\"AJJ23232\",\r\n        \"foto\":\"http:foto.com\",\r\n        \"stock\": 10\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar Prod a Carrito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"producto\": \r\n    {\r\n      \"product_id\": \"ZHnOMw2DZOzZdTbNZLfR\",\r\n      \"quantity\": 1,\r\n      \"price\": 240,\r\n      \"nombre\": \"Producto 1\",\r\n      \"descripcion\":\"Desc del producto 1\",\r\n      \"codigo\":\"AJJ23232\",\r\n      \"foto\":\"http:foto.com\",\r\n      \"stock\": 10\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/63738b52c374f7b429b91638/productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"63738b52c374f7b429b91638",
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Carrito por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/63738b52c374f7b429b91638/productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"63738b52c374f7b429b91638",
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product from Carrito",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carrito/Q3z3iXZQAmtMgZ7GWEjE/productos/ZHnOMw2DZOzZdTbNZLfR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carrito",
+								"Q3z3iXZQAmtMgZ7GWEjE",
+								"productos",
+								"ZHnOMw2DZOzZdTbNZLfR"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						},
+						"description": "Devuelve la lista completa de productos"
+					},
+					"response": []
+				},
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"aallois@accionpoint.com\",\r\n    \"password\":\"111111\",\r\n    \"nombre\":\"Tony\", \r\n    \"direccion\":\"Mi Casa 221\", \r\n    \"edad\":40, \r\n    \"telefono\":\"+59898327640\", \r\n    \"foto\":\"\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/login/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								"register"
+							]
+						},
+						"description": "Devuelve la lista completa de productos"
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"anthonyallois@gmail.com\",\r\n    \"password\":\"111111\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/login/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								"login"
+							]
+						},
+						"description": "Devuelve la lista completa de productos"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/login/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								"logout"
+							]
+						},
+						"description": "Devuelve la lista completa de productos"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
