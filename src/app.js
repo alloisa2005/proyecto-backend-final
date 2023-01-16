@@ -18,7 +18,7 @@ const passport = require('passport');
 
 const routerProductos = require('./routes/product.routes')
 const routerCarrito = require('./routes/carrito.routes')
-const routerLogin = require('./routes/login.routes') 
+const routerLogin = require('./routes/login.routes')
 
 const UserController = require('./controllers/user.controller.mongo')
 
@@ -70,35 +70,11 @@ if(cluster.isPrimary) {
   cluster.on('exit',() => cluster.fork())
 } else{
 
-  ////////////// Rutas //////////////
-  app.get('/', (req, res) =>{
-    res.render('home.ejs');
-  });
-
-  app.get('/register', (req, res) =>{
-    res.render('register.ejs');
-  });
-
-  app.post('/register', passport.authenticate('local-signup', {
-    successRedirect: '/login',
-    failureRedirect: '/register',
-    failureFlash: true
-  }));
-
-  app.get('/login', (req, res) =>{
-    res.render('login.ejs');
-  });
-  
-  app.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true
-  }));
-
+  ////////////// Rutas //////////////  
   app.use('/api/productos', routerProductos);
-  app.use('/api/carrito', routerCarrito);
-  //app.use('/api/login', routerLogin);  
-  
+  app.use('/api/carrito', routerCarrito);  
+  app.use('/', routerLogin);
+
   // Ruta para documentación SWAGGER
   app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(optionsSwagger)))
   

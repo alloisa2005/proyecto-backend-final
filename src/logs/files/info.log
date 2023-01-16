@@ -33,3 +33,4 @@
 [2023-01-15T17:44:13.439] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: anthonyallois@gmail.com
 [2023-01-15T17:47:29.829] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: anthonyallois@gmail.com
 [2023-01-16T09:20:59.905] [INFO] INFO - Ruta POST - "localhost:8080/api/login" accedida - Email: anthonyallois@gmail.com
+[2023-01-16T17:37:14.917] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: tony@gmail.com - User: JAJAJA

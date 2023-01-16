@@ -12,7 +12,7 @@ passport.deserializeUser( async(id, done) => {
   done(null, user);
 });
 
-passport.use('local-signup', new localStrategy({
+passport.use('local-register', new localStrategy({
   usernameField: 'email',
   passwordField: 'password',
   passReqToCallback: true
@@ -36,3 +36,17 @@ passport.use('local-signup', new localStrategy({
     done(null, user);  
 }))
 
+passport.use('local-login', new localStrategy({
+  usernameField: 'email',
+  passwordField: 'password',
+  passReqToCallback: true
+}, async (req, email, password, done)=>{
+  
+    let user = await UserModel.findOne({ email: email});
+    if(!user) return done(null, false, { message: 'Email no registrado'});
+    
+    let comparePassword = await bcrypt.compare(password, user.password);
+    if(!comparePassword) return done(null, false, { message: 'Password incorrecto'})
+    
+    done(null, user);  
+}))
