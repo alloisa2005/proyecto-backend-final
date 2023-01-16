@@ -52,6 +52,9 @@
       <div class="w-[40%] mx-auto py-6">
         <input class='w-full bg-white text-black rounded-lg py-2 hover:cursor-pointer hover:text-yellow-500 hover:shadow-lg' type="submit" value="Registrarse">
       </div>
+      <% if (messages.error) { %>
+        <%= messages.error %> 
+      <% } %>
     </form>
   </div>  
 

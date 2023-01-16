@@ -1,30 +1,38 @@
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy
 const bcrypt = require('bcryptjs');
-
 const UserModel = require('../models/User.mongo')
 
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
 
+passport.deserializeUser( async(id, done) => {
+  const user = await UserModel.findById(id);
+  done(null, user);
+});
 
+passport.use('local-signup', new localStrategy({
+  usernameField: 'email',
+  passwordField: 'password',
+  passReqToCallback: true
+}, async (req, email, password, done)=>{
+  
+    let user = await UserModel.findOne({ email: email});
+    if(user) return done(null, false, { message: 'Email ya registrado'});
+    
+    let hashedPassword = await bcrypt.hash(password, 12);
 
-/* passport.use(new localStrategy({passReqToCallback:true,usernameField: 'email'},function (email, password, done) {
-	UserModel.findOne({ email }, function (err, user) {
-		if (err) return done(err);
-		if (!user) return done(null, false, { message: 'Incorrect username.' });
+    user = new UserModel();
+    user.email= email;
+    user.password = hashedPassword;
+    user.nombre = req.body.name;
+    user.direccion = req.body.direccion;
+    user.edad = req.body.edad;
+    user.telefono = req.body.telefono;
+    user.foto = req.body.foto;
 
-		bcrypt.compare(password, user.password, function (err, res) {
-			if (err) return done(err);
-			if (res === false) return done(null, false, { message: 'Incorrect password.' });
-			
-			return done(null, user);
-		});
-	});
-}));
+    await user.save();
+    done(null, user);  
+}))
 
-passport.serializeUser((user, done) => done(null, user.id))
-
-passport.deserializeUser((id, done) => {
-  UserModel.findById(id, function (err, user) {
-    done(err, user)
-  })
-}) */

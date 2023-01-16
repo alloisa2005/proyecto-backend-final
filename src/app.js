@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const session = require('express-session')
+const flash = require('express-flash');
 
 const mongoose = require('mongoose');
 const swaggerUI = require('swagger-ui-express');
@@ -12,6 +13,8 @@ const cluster = require('cluster');
 const core = require('os');
 const compression = require('compression');
 const path = require('path'); 
+const passport = require('passport');
+
 
 const routerProductos = require('./routes/product.routes')
 const routerCarrito = require('./routes/carrito.routes')
@@ -35,6 +38,11 @@ const optionsSwagger = {
   apis: [`${path.join(__dirname, './routes/*.js')}`]
 }
 
+//////// Conexión MongoDB ////////
+require('./database');
+//////// Passport Local ////////
+require('./passport/passportLocal');
+
 //////////////////////// EJS //////////////////////////////
 app.set('views', path.join(__dirname, 'views'));
 app.set('view-engine', 'ejs');
@@ -43,18 +51,15 @@ app.set('view-engine', 'ejs');
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-app.use(session({    
-  key: 'user_id',
-  secret: 'mi palabra secreta',
+app.use(flash());
+app.use(session({      
+  secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false,  
-  /* store: store, */
-  cookie: { maxAge: 60000 }
+  saveUninitialized: false  
 }))
+app.use(passport.initialize())
+app.use(passport.session());
 app.use(compression());
-
-//////// Conexión MongoDB ////////
-require('./database');
 
 if(cluster.isPrimary) {
   for (let i = 0; i < core.cpus().length; i++) {
@@ -74,27 +79,25 @@ if(cluster.isPrimary) {
     res.render('register.ejs');
   });
 
-  app.post('/register', async (req, res) =>{
-    let {email, password, nombre, direccion, edad, telefono, foto} = req.body;
-    try {
-      await UserController.register(email, password, nombre, direccion, edad, telefono, foto);
-      res.redirect('/login')
-    } catch (error) {
-      
-    }
-  });
+  app.post('/register', passport.authenticate('local-signup', {
+    successRedirect: '/login',
+    failureRedirect: '/register',
+    failureFlash: true
+  }));
 
   app.get('/login', (req, res) =>{
     res.render('login.ejs');
   });
   
-  app.post('/login', (req, res) =>{
-    
-  });
+  app.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+  }));
 
   app.use('/api/productos', routerProductos);
   app.use('/api/carrito', routerCarrito);
-  app.use('/api/login', routerLogin);  
+  //app.use('/api/login', routerLogin);  
   
   // Ruta para documentación SWAGGER
   app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(optionsSwagger)))
