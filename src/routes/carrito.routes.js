@@ -4,11 +4,7 @@ const router = Router();
 
 const CartControllerMONGO = require('../controllers/cart.controller.mongo')
 
-const { enviarWhats } = require('../utils/enviarWhats');
-
-////////////// Middlewares //////////////
-const { isLogged } = require('../middlewares/validaciones')
- 
+const { enviarWhats } = require('../utils/enviarWhats'); 
 
 
 /**
@@ -61,10 +57,10 @@ const { isLogged } = require('../middlewares/validaciones')
  *              items:
  *                $ref: '#/components/schemas/Cart'
  */
-router.get('/', isLogged, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     
-    let result = await CartControllerMONGO.getMyCart(req.session.user)
+    let result = await CartControllerMONGO.getMyCart(req.user)
     return res.status(200).send(result); 
 
   } catch (error) {
@@ -155,12 +151,11 @@ router.get('/:id/productos', async (req, res) => {
  *      200: 
  *        description: nuevo carrito fue creado
  */
-router.post('/',  isLogged, async (req, res) => {
-  let { producto } = req.body; 
+router.post('/', async (req, res) => {
+  let { producto, user } = req.body; 
   
-  try {    
-    
-    let result = await CartControllerMONGO.createCart(producto, req.session.user);
+  try {        
+    let result = await CartControllerMONGO.createCart(producto, user);
     return res.status(200).send(result); 
     
   } catch (error) {
@@ -206,13 +201,13 @@ router.post('/',  isLogged, async (req, res) => {
  *                result:
  *                  rtype: string
  */
-router.delete('/:id', isLogged, async (req, res) => {
+router.delete('/:id', async (req, res) => {
 
   let { id } = req.params;  
   try {
     
     let result = await CartControllerMONGO.delete(id);
-    enviarWhats('Muchas gracias por su compra. Ha recibido un correo con el detalle de la misma.',req.session.user.telefono);
+    enviarWhats('Muchas gracias por su compra. Ha recibido un correo con el detalle de la misma.',req.user.telefono);
 
     //No llegué a hacer un msj "lindo" para el correo, lo dejo pendiente para la proxima
     
@@ -266,7 +261,7 @@ router.delete('/:id', isLogged, async (req, res) => {
  *      200: 
  *        description: Producto agregado al carrito
  */
-router.post('/:id/productos', isLogged, async (req, res) => {
+router.post('/:id/productos', async (req, res) => {
 
   let { id } = req.params;
   let { producto } = req.body;
@@ -281,7 +276,7 @@ router.post('/:id/productos', isLogged, async (req, res) => {
   }
 });
 
-router.delete('/:id_cart/productos/:id_prod', isLogged, async (req, res) => {
+router.delete('/:id_cart/productos/:id_prod', async (req, res) => {
 
   let { id_cart, id_prod } = req.params;
 

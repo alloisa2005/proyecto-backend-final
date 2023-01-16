@@ -4,12 +4,22 @@ const router = Router();
 const passport = require('passport');
 
 const { logger_info, logger_error } = require('../logs/log_config');
+const CartController = require('../controllers/cart.controller.mongo')
 
 ////////////// Middlewares //////////////
 const { isLogged, isNotLogged } = require('../middlewares/validaciones')
 
-router.get('/', isLogged, (req, res) =>{
-  res.render('home.ejs');
+router.get('/', isLogged, async (req, res) =>{
+
+  let response = await CartController.getMyCart(req.user);  
+
+  let cantidad = 0;
+  if(response.result.length !== 0){
+    cantidad = response.result[0].length;
+  }
+  let result = response.result[0];  
+
+  res.render('home.ejs', {user: req.user, result, cantidad});
 });
 
 router.get('/register', isNotLogged, (req, res) =>{
