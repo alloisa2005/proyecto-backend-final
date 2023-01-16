@@ -6,13 +6,13 @@ const passport = require('passport');
 const { logger_info, logger_error } = require('../logs/log_config');
 
 ////////////// Middlewares //////////////
-const { isLogged, isAdmin } = require('../middlewares/validaciones')
+const { isLogged, isNotLogged } = require('../middlewares/validaciones')
 
-router.get('/', (req, res) =>{
+router.get('/', isLogged, (req, res) =>{
   res.render('home.ejs');
 });
 
-router.get('/register', (req, res) =>{
+router.get('/register', isNotLogged, (req, res) =>{
   res.render('register.ejs');
 });
 
@@ -22,7 +22,7 @@ router.post('/register', passport.authenticate('local-register', {
   failureFlash: true
 }));
 
-router.get('/login', (req, res) =>{
+router.get('/login', isNotLogged, (req, res) =>{
   res.render('login.ejs');
 });
 

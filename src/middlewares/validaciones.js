@@ -14,23 +14,17 @@ const validarInputsProduct = (req,res,next) => {
 }
 
 const isLogged = (req, res, next) => {
-  if(req.session.user){
-    next();
-  }else{
-    return res.status(404).send({status: 'ERROR',result: 'Usuario no logged'});
+  if(req.isAuthenticated()){
+    return next();
   }
+  res.redirect('/login');
 }
 
-const isAdmin = (req, res, next) => {
-  if(req.session.user){
-    if(req.session.user.isAdmin === 'S'){
-      next();
-    }else{
-      return res.status(404).send({status: 'ERROR',result: 'Usuario no autorizado a esta ruta'});
-    }
-  }else{
-    return res.status(404).send({status: 'ERROR',result: 'Usuario no logged'});
+const isNotLogged = (req, res, next) => {
+  if(!req.isAuthenticated()){
+    return next();
   }
+  res.redirect('/');
 }
 
-module.exports = { validarInputsProduct, isLogged, isAdmin };
+module.exports = { validarInputsProduct, isLogged, isNotLogged };
