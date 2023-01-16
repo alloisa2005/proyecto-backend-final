@@ -17,6 +17,8 @@ const routerProductos = require('./routes/product.routes')
 const routerCarrito = require('./routes/carrito.routes')
 const routerLogin = require('./routes/login.routes') 
 
+const UserController = require('./controllers/user.controller.mongo')
+
 const app = express();
 
 let PORT = process.env.PORT || 8080;
@@ -72,8 +74,14 @@ if(cluster.isPrimary) {
     res.render('register.ejs');
   });
 
-  app.post('/register', (req, res) =>{
-    
+  app.post('/register', async (req, res) =>{
+    let {email, password, nombre, direccion, edad, telefono, foto} = req.body;
+    try {
+      await UserController.register(email, password, nombre, direccion, edad, telefono, foto);
+      res.redirect('/login')
+    } catch (error) {
+      
+    }
   });
 
   app.get('/login', (req, res) =>{
