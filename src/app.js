@@ -33,6 +33,10 @@ const optionsSwagger = {
   apis: [`${path.join(__dirname, './routes/*.js')}`]
 }
 
+//////////////////////// EJS //////////////////////////////
+app.set('views', path.join(__dirname, 'views'));
+app.set('view-engine', 'ejs');
+
 //////////////////////// Middlewares //////////////////////////////
 app.use(cors());
 app.use(express.json());
@@ -59,6 +63,10 @@ if(cluster.isPrimary) {
   cluster.on('exit',() => cluster.fork())
 } else{
   //////// Rutas ////////
+  app.get('/login', (req, res) =>{
+    res.render('login.ejs');
+  });
+
   app.use('/api/productos', routerProductos);
   app.use('/api/carrito', routerCarrito);
   app.use('/api/login', routerLogin);  
