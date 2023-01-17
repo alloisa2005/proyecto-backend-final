@@ -5,6 +5,8 @@ const UserModel = require('../models/User.mongo')
 
 const { enviarMail } = require('../utils/enviarMail');
 
+const { logger_info } = require('../logs/log_config');
+
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
@@ -44,6 +46,8 @@ passport.use('local-register', new localStrategy({
     mensaje = `<div><h2>Bienvenido/a</h2><p>Gracias por registrarte en Ecommerce Back, puedes visitar la tienda cuando gustes.</p><a href="#">www.tienda-back.com</a></div>`;
     enviarMail(email, `Ecommerce Back, Bienvenido/a ${req.body.name}`, mensaje)
 
+    logger_info.info(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - Email: ${user.email} - User: ${user.nombre} registrado.`);  
+
     done(null, user);  
 }))
 
@@ -59,5 +63,7 @@ passport.use('local-login', new localStrategy({
     let comparePassword = await bcrypt.compare(password, user.password);
     if(!comparePassword) return done(null, false, { message: 'Password incorrecto'})
     
+    logger_info.info(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - Email: ${user.email} - User: ${user.nombre} logueado.`);  
+
     done(null, user);  
 }))

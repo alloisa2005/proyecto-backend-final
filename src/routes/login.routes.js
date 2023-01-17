@@ -3,7 +3,7 @@ const { Router } = require('express');
 const router = Router();
 const passport = require('passport');
 
-const { logger_info, logger_error } = require('../logs/log_config');
+const { logger_info } = require('../logs/log_config');
 const CartController = require('../controllers/cart.controller.mongo')
 
 ////////////// Middlewares //////////////
@@ -43,12 +43,16 @@ router.post('/login', passport.authenticate('local-login', {
 }));
 
 router.get('/logout', (req, res, next) => {
+
+  logger_info.info(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - Email: ${req.user.email} - User: ${req.user.nombre} cerró sesión.`);  
+
   req.logout(function(err) {
     if (err) { 
       return next(err); 
-    }
+    }        
     res.redirect('/login');
   });
+  
 });
 
 module.exports = router;

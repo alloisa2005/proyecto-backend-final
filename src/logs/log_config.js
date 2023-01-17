@@ -17,11 +17,11 @@ log4js.configure({
       level: "all"
     },
     WARNING: {
-      appenders: ["consola", "file_warning"],
+      appenders: ["file_warning"],
       level: "WARN"
     },
     ERROR: {
-      appenders: ["consola", "file_error"],
+      appenders: ["file_error"],
       level: "ERROR"
     }
   }
