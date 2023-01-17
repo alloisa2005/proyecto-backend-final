@@ -3,6 +3,8 @@ const localStrategy = require('passport-local').Strategy
 const bcrypt = require('bcryptjs');
 const UserModel = require('../models/User.mongo')
 
+const { enviarMail } = require('../utils/enviarMail');
+
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
@@ -33,6 +35,15 @@ passport.use('local-register', new localStrategy({
     user.foto = req.body.foto;
 
     await user.save();
+
+    //Envío mail al administrador
+    let mensaje = `<div><h2>Nuevo Usuario Registrado</h2><p>Email: ${email}</p><p>Nombre: ${req.body.name}</p><p>Dirección: ${req.body.direccion}</p><p>Teléfono: ${req.body.telefono}</p><p>Edad: ${req.body.edad}</p></div>`;
+    enviarMail(process.env.MAIL_NODEMAILER, 'Nuevo Registro', mensaje)
+
+    //Envío mail al usuario que se registró 
+    mensaje = `<div><h2>Bienvenido/a</h2><p>Gracias por registrarte en Ecommerce Back, puedes visitar la tienda cuando gustes.</p><a href="#">www.tienda-back.com</a></div>`;
+    enviarMail(email, `Ecommerce Back, Bienvenido/a ${req.body.name}`, mensaje)
+
     done(null, user);  
 }))
 
