@@ -55,8 +55,8 @@ passport.use('local-login', new localStrategy({
   usernameField: 'email',
   passwordField: 'password',
   passReqToCallback: true
-}, async (req, email, password, done)=>{
-  
+}, async (req, email, password, done)=>{      
+
     let user = await UserModel.findOne({ email: email});
     if(!user) return done(null, false, { message: 'Email no registrado'});
     

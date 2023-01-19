@@ -9,7 +9,7 @@ const CartController = require('../controllers/cart.controller.mongo')
 ////////////// Middlewares //////////////
 const { isLogged, isNotLogged } = require('../middlewares/validaciones')
 
-router.get('/', isLogged, async (req, res) =>{
+router.get('/', isLogged, async (req, res) =>{  
 
   let response = await CartController.getMyCart(req.user);  
 
