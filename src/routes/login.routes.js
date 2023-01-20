@@ -12,7 +12,7 @@ const { isLogged, isNotLogged } = require('../middlewares/validaciones')
 router.get('/', isLogged, async (req, res) =>{  
 
   let response = await CartController.getMyCart(req.user);  
-
+  
   let cantidad = 0;
   if(response.result.length !== 0){
     cantidad = response.result[0].length;
