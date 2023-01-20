@@ -13,9 +13,12 @@
       <img class="w-[100px] " src="./logo.png" alt="Logo Ecommerce">      
     </div>
     <p class="text-2xl font-bold">Bienvenido/a <%= user.nombre  %></p>
-    <div class="flex items-center">
+    <div class="flex items-center space-x-2">
+      <a href="#">
+        <img class='w-[25px] h-[25px]' src="./cart-icon.png" alt="Cart">
+      </a>
       <a class='text-xl font-bold hover:text-gray-600' href="/logout">
-        <div class='w-[40px] h-[40px] bg-red-500 hover:bg-red-300 duration-300 hover:shadow-lg flex justify-center items-center rounded-full'>
+        <div class='w-[45px] h-[45px] duration-300 flex justify-center items-center'>
           <img class='w-[25px] h-[25px]' src="./close-session.png" alt="Close">
         </div>
       </a>
@@ -34,12 +37,14 @@
     </div>   
     <div class="w-full grid grid-cols-3 gap-6 mt-2">
       <% for( let i = 0; i < productos.length; i++ ) { %>
-        <div class="border border-black p-2 rounded-md">  
-          <p class="font-bold"> <%= productos[i].nombre %>  </p>
-          <p class="font-bold"> <%= productos[i].descripcion %>  </p>
+        <div class="border border-black p-2 rounded-md hover:shadow-xl hover:scale-105 duration-200">  
+          <p class="font-bold text-xl"> <%= productos[i].nombre %>  </p>
+          <p class="font-bold text-gray-700"> <%= productos[i].descripcion %>  </p>
           <div class="flex justify-between items-center">
-            <p class="font-bold"> Precio ($): <%= productos[i].precio %>  </p>          
-            <img class="w-[25px] object-cover hover:bg-red-500 rounded-full hover:cursor-pointer duration-200" src="./add-icon.png" alt="Add Icon">
+            <p class="font-bold text-gray-700"> Precio ($): <%= productos[i].precio %>  </p>          
+            <a href="#">
+              <img class="w-[25px] object-cover hover:bg-red-500 rounded-full hover:cursor-pointer duration-200" src="./add-icon.png" alt="Add Icon">
+            </a>
           </div>
         </div>
       <% } %>
