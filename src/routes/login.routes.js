@@ -12,8 +12,7 @@ const { isLogged, isNotLogged } = require('../middlewares/validaciones')
 
 router.get('/', isLogged, async (req, res) =>{    
   
-  let prods = await ProductController.getAll();    
-
+  let prods = await ProductController.getAll();      
   res.render('home.ejs', {user: req.user, productos: prods.result});
 });
 

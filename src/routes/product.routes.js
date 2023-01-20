@@ -79,7 +79,7 @@ let admin = true;
 router.get('/', async (req, res) => {
   try {    
     
-    logger_info.info(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - Email: ${req.user.email} - User: ${req.user.nombre}`);  
+    //logger_info.info(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - Email: ${req.user.email} - User: ${req.user.nombre}`);  
 
     let result = await ProductControllerMONGO.getAll()
     
@@ -141,7 +141,7 @@ router.get('/:id', isLogged, async (req, res) => {
  *      200: 
  *        description: nuevo producto fue creado
  */
-router.post('/', isLogged, validarInputsProduct, async (req, res) => {
+router.post('/', /*isLogged,*/ validarInputsProduct, async (req, res) => {
 
   try {    
       
@@ -183,7 +183,7 @@ router.post('/', isLogged, validarInputsProduct, async (req, res) => {
  *              type: object
  *              $ref: '#/components/schemas/Product' 
  */
-router.put('/:id', isLogged, validarInputsProduct, async (req, res) => {
+router.put('/:id', /*isLogged,*/ validarInputsProduct, async (req, res) => {
   let { id } = req.params;            
   try {
        
