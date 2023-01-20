@@ -25,28 +25,25 @@
         </a>
       <% } %>
     </div>
-  </nav>
-  <div class="max-w-[1300px] h-[80px] mx-auto px-4 flex justify-between items-center">
-    <% if (cantidad == 0) { %>
-      <p class="text-2xl font-bold">No ha agregado nada al carrito.</p> 
-    <% } else {%>
-      <p class="text-2xl font-bold">Su carrito tiene <%= result.productos.length %>  productos.</p>       
-    <% } %>
-  </div>
+  </nav>  
 
-  <div class="max-w-[1300px] mx-auto mt-2">
-    <% if (cantidad !== 0) { %>
-      <div class="w-full grid grid-cols-3 gap-6">
-        <% for( let i = 0; i < result.productos.length; i++ ) { %>
-          <div class="border border-black p-2 rounded-md hover:shadow-sm hover:shadow-black/80 hover:cursor-pointer hover:scale-105 duration-200">  
-            <p class="font-bold"> <%= result.productos[i].nombre %>  </p>
-            <p class="font-bold"> <%= result.productos[i].descripcion %>  </p>
-            <p class="font-bold"> Precio: <%= result.productos[i].price %>  </p>
-            <p class="font-bold"> Cantidad: <%= result.productos[i].quantity %>  </p>
+  <div class="max-w-[1300px] mx-auto mt-8"> 
+    <div class="w-full py-4 text-center">
+      <p class="text-3xl font-bold uppercase pb-2">Nuestros productos</p>
+      <div class="w-full h-[2px] bg-red-500"></div>
+    </div>   
+    <div class="w-full grid grid-cols-3 gap-6 mt-2">
+      <% for( let i = 0; i < productos.length; i++ ) { %>
+        <div class="border border-black p-2 rounded-md">  
+          <p class="font-bold"> <%= productos[i].nombre %>  </p>
+          <p class="font-bold"> <%= productos[i].descripcion %>  </p>
+          <div class="flex justify-between items-center">
+            <p class="font-bold"> Precio ($): <%= productos[i].precio %>  </p>          
+            <img class="w-[25px] object-cover hover:bg-red-500 rounded-full hover:cursor-pointer duration-200" src="./add-icon.png" alt="Add Icon">
           </div>
-        <% } %>
-      </div>
-    <% } %>
+        </div>
+      <% } %>
+    </div>    
   </div>
 </body>
 </html>
