@@ -2,7 +2,6 @@
 let products_container = document.getElementsByClassName('products_container')[0]
 
 loadProducts();
-cartQuantity();
 
 // Cargo grilla inicial con los productos
 async function loadProducts() {
@@ -31,6 +30,8 @@ async function loadProducts() {
       products_container.innerHTML += product_card;
     }
 
+    cartQuantity();
+
     let btns_add = document.getElementsByClassName('btn_add');
     for (let i = 0; i < btns_add.length; i++) {
       const button = btns_add[i];
@@ -41,9 +42,7 @@ async function loadProducts() {
 
 async function cartQuantity(){
   let response = await fetch('/api/carrito');
-  let data = await response.json();  
-  
-  console.log(data);
+  let data = await response.json();      
 
   let p_cantidad = document.getElementsByClassName('cart_quantity')[0];
   p_cantidad.innerText = data.cantidad;  
@@ -80,8 +79,11 @@ async function addToCart(event) {
   });
   let data = await response.json();
   
-  if(data.status === 'OK') {
-    cartQuantity();
-    alert('Producto agregado al carrito');
+  if(data.status === 'OK') {    
+    //alert('Producto agregado al carrito');    
+    swal(prod_nombre, "¡añadido al carrito!", "success", {
+      button: "Aceptar",
+    });
   }
+  cartQuantity();
 }

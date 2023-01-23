@@ -237,3 +237,22 @@
 [2023-01-23T16:05:21.473] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: JAJAJA logueado.
 [2023-01-23T16:06:39.279] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe Castro registrado.
 [2023-01-23T16:09:07.214] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe Castro logueado.
+[2023-01-23T17:01:18.841] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: juan@gmail.com - User: Juan Perez logueado.
+[2023-01-23T17:02:05.390] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: juan@gmail.com - User: Juan Perez logueado.
+[2023-01-23T17:02:09.015] [INFO] INFO - Ruta GET - "localhost:8080" accedida - Email: juan@gmail.com - User: Juan Perez cerró sesión.
+[2023-01-23T17:02:13.440] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe Castro logueado.
+[2023-01-23T17:02:16.015] [INFO] INFO - Ruta GET - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe Castro cerró sesión.
+[2023-01-23T17:02:20.091] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: JAJAJA logueado.
+[2023-01-23T17:03:32.485] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe Castro logueado.
+[2023-01-23T17:05:36.268] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: JAJAJA logueado.
+[2023-01-23T17:05:57.653] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: JAJAJA logueado.
+[2023-01-23T17:10:35.782] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe Castro logueado.
+[2023-01-23T17:11:56.367] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe Castro logueado.
+[2023-01-23T17:12:41.512] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: JAJAJA logueado.
+[2023-01-23T17:13:18.464] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: JAJAJA logueado.
+[2023-01-23T17:13:47.768] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: JAJAJA logueado.
+[2023-01-23T17:15:44.484] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: juan@gmail.com - User: Juan Perez logueado.
+[2023-01-23T17:16:53.304] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: juan@gmail.com - User: Juan Perez logueado.
+[2023-01-23T17:18:06.572] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe Castro logueado.
+[2023-01-23T17:18:43.061] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe Castro logueado.
+[2023-01-23T17:19:32.486] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe Castro logueado.
