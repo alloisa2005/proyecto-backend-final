@@ -13,7 +13,7 @@ const { isLogged, isNotLogged } = require('../middlewares/validaciones')
 router.get('/', isLogged, async (req, res) =>{    
   
   let prods = await ProductController.getAll();      
-  res.render('home.ejs', {user: req.user, productos: prods.result});
+  res.render('homes.ejs', {user: req.user, productos: prods.result});
 });
 
 router.get('/register', isNotLogged, (req, res) =>{

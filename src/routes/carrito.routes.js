@@ -151,11 +151,11 @@ router.get('/:id/productos', async (req, res) => {
  *      200: 
  *        description: nuevo carrito fue creado
  */
-router.post('/', async (req, res) => {
-  let { producto, user } = req.body; 
-  
+router.post('/', async (req, res) => {  
+  let { producto } = req.body;       
+
   try {        
-    let result = await CartControllerMONGO.createCart(producto, user);
+    let result = await CartControllerMONGO.createCart(producto, req.user);
     return res.status(200).send(result); 
     
   } catch (error) {

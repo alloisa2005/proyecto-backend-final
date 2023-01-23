@@ -35,22 +35,8 @@
       <p class="text-3xl font-bold uppercase pb-2">Nuestros productos</p>
       <div class="w-full h-[2px] bg-red-500"></div>
     </div>   
-    <div id='principal' class="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-3 mb-5">
-      <% for( let i = 0; i < productos.length; i++ ) { %>
-        <div class="border border-black overflow-hidden hover:cursor-pointer rounded-md hover:shadow-xl hover:scale-105 duration-200">  
-          <p id="prod_id" class="hidden id_product"><%= productos[i]._id  %> </p>
-          <p id="prod_codigo" class="hidden"><%= productos[i].codigo  %> </p>
-          <p id="prod_stock" class="hidden"><%= productos[i].stock  %> </p>
-          <img id="prod_img" class="h-[230px] w-full object-cover" src=<%= productos[i].foto  %>  alt="">
-          <div class="p-2">
-            <p id="prod_nombre" class="font-bold text-xl"> <%= productos[i].nombre %>  </p>
-            <p id="prod_desc" class="font-bold text-gray-700"> <%= productos[i].descripcion %>  </p>
-            <div class="flex justify-between items-center">
-              <p id="prod_precio" class="font-bold text-gray-700"> Precio ($): <%= productos[i].precio %>  </p>                                   
-            </div>
-          </div>
-        </div>
-      <% } %>
+    <div class="products_container w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-3 mb-5">            
+      <!-- Grilla con productos -->
     </div>    
   </div>
   <script src="home.js"></script>
