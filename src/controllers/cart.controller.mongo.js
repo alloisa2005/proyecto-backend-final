@@ -25,8 +25,17 @@ class CartController {
     }
   }
 
-  async createCart(prod, userId) {
+  async createCart(prod, userId) {    
     try {      
+
+      // Miro si el user ya tiene un carrito creado
+      let cart = await CartModel.findOne({userId});      
+      console.log(cart);
+      
+      // Si existe el carrito, le agrego productos
+      if(cart) return await this.addProductToCart(cart._id, prod);        
+      
+      // Sino creo el carrito y le agrego el producto elegido
       let subTotal = prod.quantity * prod.price;
       let result = await CartModel.create({userId, productos: prod, subTotal}); 
       return {status:'OK', result};

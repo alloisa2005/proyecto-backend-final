@@ -34,13 +34,13 @@ async function loadProducts() {
     let btns_add = document.getElementsByClassName('btn_add');
     for (let i = 0; i < btns_add.length; i++) {
       const button = btns_add[i];
-      button.addEventListener('click', addToChart)
+      button.addEventListener('click', addToCart)
     }
   }
 }
 
 
-async function addToChart(event) {
+async function addToCart(event) {
   let product_card = event.target.parentElement.parentElement.parentElement;
 
   let prod_id = product_card.getElementsByClassName('prod_id')[0].innerText;
@@ -70,6 +70,7 @@ async function addToChart(event) {
     body: JSON.stringify({producto}) 
   });
   let data = await response.json();
+  
   if(data.status === 'OK') {
     alert('Producto agregado al carrito');
   }
