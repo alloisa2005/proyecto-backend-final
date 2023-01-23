@@ -2,7 +2,7 @@
 let products_container = document.getElementsByClassName('products_container')[0]
 
 loadProducts();
-
+cartQuantity();
 
 // Cargo grilla inicial con los productos
 async function loadProducts() {
@@ -35,10 +35,19 @@ async function loadProducts() {
     for (let i = 0; i < btns_add.length; i++) {
       const button = btns_add[i];
       button.addEventListener('click', addToCart)
-    }
+    }    
   }
 }
 
+async function cartQuantity(){
+  let response = await fetch('/api/carrito');
+  let data = await response.json();  
+  
+  console.log(data);
+
+  let p_cantidad = document.getElementsByClassName('cart_quantity')[0];
+  p_cantidad.innerText = data.cantidad;  
+}
 
 async function addToCart(event) {
   let product_card = event.target.parentElement.parentElement.parentElement;
@@ -72,6 +81,7 @@ async function addToCart(event) {
   let data = await response.json();
   
   if(data.status === 'OK') {
+    cartQuantity();
     alert('Producto agregado al carrito');
   }
 }

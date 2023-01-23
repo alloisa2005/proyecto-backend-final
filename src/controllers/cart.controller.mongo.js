@@ -3,12 +3,18 @@ const CartModel = require('../models/Cart.mongo')
 class CartController {
 
   async getMyCart(user) {
+    
     try {      
-      let result = await CartModel.find()
+      let result = await CartModel.findOne({userId: user.id})      
+      if(!result) return {status:'OK', cantidad: 0};
 
-      result = result.filter(c => c.user.id === user.id);            
+      let productos = result.productos;
+      let cantidad = 0;
+      for (let i = 0; i < productos.length; i++) {
+        cantidad += productos[i].quantity;        
+      }
 
-      return {status:'OK', result}; 
+      return {status:'OK', result, cantidad}; 
     } catch (error) {
       return {status:'ERROR', result: error.message};
     }
@@ -29,8 +35,7 @@ class CartController {
     try {      
 
       // Miro si el user ya tiene un carrito creado
-      let cart = await CartModel.findOne({userId});      
-      console.log(cart);
+      let cart = await CartModel.findOne({userId});            
       
       // Si existe el carrito, le agrego productos
       if(cart) return await this.addProductToCart(cart._id, prod);        
@@ -110,6 +115,7 @@ class CartController {
       return {status:'ERROR', result: error.message};
     }
   }
+  
 }
 
 module.exports = new CartController();

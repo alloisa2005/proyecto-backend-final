@@ -58,8 +58,7 @@ const { enviarWhats } = require('../utils/enviarWhats');
  *                $ref: '#/components/schemas/Cart'
  */
 router.get('/', async (req, res) => {
-  try {
-    
+  try {    
     let result = await CartControllerMONGO.getMyCart(req.user)
     return res.status(200).send(result); 
 
@@ -67,6 +66,17 @@ router.get('/', async (req, res) => {
     return res.status(404).send({status:'ERROR', result: error.message});
   }  
 })
+
+/* router.get('/cantidad', async (req, res) => {
+  try {
+    
+    let result = await CartControllerMONGO.
+    return res.status(200).send(result); 
+
+  } catch (error) {
+    return res.status(404).send({status:'ERROR', result: error.message});
+  }  
+}) */
 
 /**
  * @swagger
@@ -155,8 +165,7 @@ router.post('/', async (req, res) => {
   let { producto } = req.body;       
 
   try {        
-    let result = await CartControllerMONGO.createCart(producto, req.user._id);
-    console.log(result);
+    let result = await CartControllerMONGO.createCart(producto, req.user._id);    
     return res.status(200).send(result); 
     
   } catch (error) {
