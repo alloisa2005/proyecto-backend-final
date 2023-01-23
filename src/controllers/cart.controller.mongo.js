@@ -25,10 +25,10 @@ class CartController {
     }
   }
 
-  async createCart(prod, user) {
+  async createCart(prod, userId) {
     try {      
       let subTotal = prod.quantity * prod.price;
-      let result = await CartModel.create({user, productos: prod, subTotal}); 
+      let result = await CartModel.create({userId, productos: prod, subTotal}); 
       return {status:'OK', result};
     } catch (error) {
       return {status:'ERROR', result: error.message};
