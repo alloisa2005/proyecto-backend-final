@@ -5,7 +5,7 @@ const router = Router();
 const CartControllerMONGO = require('../controllers/cart.controller.mongo')
 
 const { enviarWhats } = require('../utils/enviarWhats'); 
-
+const { isLogged } = require('../middlewares/validaciones')
 
 /**
  * @swagger
@@ -57,10 +57,14 @@ const { enviarWhats } = require('../utils/enviarWhats');
  *              items:
  *                $ref: '#/components/schemas/Cart'
  */
-router.get('/', async (req, res) => {
+router.get('/', isLogged, async (req, res) => {  
+  res.render('cart.ejs', { user: req.user }); 
+})
+
+router.get('/cant', isLogged, async (req, res) => {  
   try {    
     let result = await CartControllerMONGO.getMyCart(req.user)
-    return res.status(200).send(result); 
+    return res.status(200).send(result);     
 
   } catch (error) {
     return res.status(404).send({status:'ERROR', result: error.message});

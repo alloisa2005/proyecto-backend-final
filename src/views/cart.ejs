@@ -6,7 +6,7 @@
     </div>
     <p class="text-2xl font-bold">Bienvenido/a <%= user.nombre  %></p>    
     <div class="flex items-center space-x-2">
-      <a href="/api/carrito" class="relative">
+      <a href="#" class="relative">
         <img class='[25px] h-[25px]' src="./images/cart-icon.png" alt="Cart">
         <div class="p-3 absolute -right-2 -top-2 bg-blue-500/90 rounded-full  h-[17px] w-[17px] flex items-center justify-center">
           <p class="cart_quantity text-white font-bold"></p>
@@ -23,19 +23,9 @@
         </a>
       <% } %>
     </div>
-  </nav>  
+  </nav>
 
-  <div class="max-w-[1300px] mx-auto mt-8 px-4 "> 
-    <div class="w-full py-4 text-center">
-      <p class="text-3xl font-bold uppercase pb-2">Nuestros productos</p>
-      <div class="w-full h-[2px] bg-red-500"></div>
-    </div>   
-    <div class="products_container w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-3 mb-5">            
-      <!-- Grilla con productos -->
-    </div>    
-  </div>
-  
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script src="./home.js"></script>
-</body>
+  <h2>My Cart</h2>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>  
+  </body>
 </html>

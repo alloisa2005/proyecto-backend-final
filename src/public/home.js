@@ -1,7 +1,7 @@
 
-let products_container = document.getElementsByClassName('products_container')[0]
-
+let products_container = document.getElementsByClassName('products_container')[0];
 loadProducts();
+
 
 // Cargo grilla inicial con los productos
 async function loadProducts() {
@@ -41,11 +41,11 @@ async function loadProducts() {
 }
 
 async function cartQuantity(){
-  let response = await fetch('/api/carrito');
+  let response = await fetch('/api/carrito/cant');
   let data = await response.json();      
-
+  
   let p_cantidad = document.getElementsByClassName('cart_quantity')[0];
-  p_cantidad.innerText = data.cantidad;  
+  p_cantidad.innerText = data.cantidad;    
 }
 
 async function addToCart(event) {
