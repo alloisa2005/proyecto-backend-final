@@ -1,31 +1,35 @@
 <%- include('partials/header') %>
 
   <nav class="max-w-[1300px] h-[80px] mx-auto px-4 flex justify-between items-center">
-    <div class="flex">
-      <img class="w-[100px] " src="./images/logo.png" alt="Logo Ecommerce">      
-    </div>
+    <a href="/" class="flex hover:cursor-pointer">
+      <img class="w-[100px] " src="../images/logo.png" alt="Logo Ecommerce">      
+    </a>
     <p class="text-2xl font-bold">Bienvenido/a <%= user.nombre  %></p>    
     <div class="flex items-center space-x-2">
       <a href="#" class="relative">
-        <img class='[25px] h-[25px]' src="./images/cart-icon.png" alt="Cart">
+        <img class='[25px] h-[25px]' src="../images/cart-icon.png" alt="Cart">
         <div class="p-3 absolute -right-2 -top-2 bg-blue-500/90 rounded-full  h-[17px] w-[17px] flex items-center justify-center">
           <p class="cart_quantity text-white font-bold"></p>
         </div>
       </a>
       <a class='text-xl font-bold hover:text-gray-600' href="/logout">
         <div class='w-[45px] h-[45px] duration-300 flex justify-center items-center'>
-          <img class='w-[25px] h-[25px]' src="./images/close-session.png" alt="Close">
+          <img class='w-[25px] h-[25px]' src="../images/close-session.png" alt="Close">
         </div>
       </a>
       <% if (user.isAdmin === 'S') { %>        
         <a href="#">
-          <img class='w-[50px] h-[50px] object-contain' src="./images/profile.png" alt="Profile">
+          <img class='w-[50px] h-[50px] object-contain' src="../images/profile.png" alt="Profile">
         </a>
       <% } %>
     </div>
   </nav>
 
-  <h2>My Cart</h2>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>  
+  <div class="max-w-[1300px] mx-auto mt-8 px-4 "> 
+    
+  </div>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    
+  <script src="../cart.js"></script>
   </body>
 </html>

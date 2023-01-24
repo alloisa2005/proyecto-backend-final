@@ -14,6 +14,7 @@ const cartSchema = mongoose.Schema({
     foto: {type:String, required: true},    
     stock: {type:Number, required: true},
   }],
+  cantidad: {type: Number },
   subTotal: {type: Number, default: 0 }
 }, {timestamps: true})
 

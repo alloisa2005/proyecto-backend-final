@@ -6,7 +6,6 @@ const cors = require('cors');
 const session = require('express-session')
 const flash = require('express-flash');
 
-const mongoose = require('mongoose');
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc')
 const cluster = require('cluster');
@@ -51,7 +50,7 @@ app.set('view-engine', 'ejs');
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 app.use(session({      
   secret: process.env.SESSION_SECRET,
@@ -80,9 +79,9 @@ if(cluster.isPrimary) {
   // Ruta para documentación SWAGGER
   app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(optionsSwagger)))
   
-  app.use((req,res) => {
+ /*  app.use((req,res) => {
     res.send({status: 'ERROR', result: `Ruta ${req.url} no implementada`})
-  });
+  }); */
   
   
   app.listen(PORT, () => console.log(`Server Up on Port ${PORT}!!`));

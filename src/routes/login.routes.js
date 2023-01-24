@@ -11,11 +11,11 @@ const ProductController = require('../controllers/product.controller.mongo')
 const { isLogged, isNotLogged } = require('../middlewares/validaciones')
 
 router.get('/', isLogged, async (req, res) =>{             
-  res.render('homes.ejs', { user: req.user });
+  res.render('homes.ejs', { title: 'Home', user: req.user });
 });
 
 router.get('/register', isNotLogged, (req, res) =>{
-  res.render('register.ejs');
+  res.render('register.ejs', {title: 'Register'});
 });
 
 router.post('/register', passport.authenticate('local-register', {
@@ -25,7 +25,7 @@ router.post('/register', passport.authenticate('local-register', {
 }));
 
 router.get('/login', isNotLogged, (req, res) =>{
-  res.render('login.ejs');
+  res.render('login.ejs', {title: 'Login'});
 });
 
 router.post('/login', passport.authenticate('local-login', {

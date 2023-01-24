@@ -58,12 +58,12 @@ const { isLogged } = require('../middlewares/validaciones')
  *                $ref: '#/components/schemas/Cart'
  */
 router.get('/', isLogged, async (req, res) => {  
-  res.render('cart.ejs', { user: req.user }); 
+  res.render('cart.ejs', { title: 'My Cart', user: req.user }); 
 })
 
 router.get('/cant', isLogged, async (req, res) => {  
   try {    
-    let result = await CartControllerMONGO.getMyCart(req.user)
+    let result = await CartControllerMONGO.getMyCart(req.user);
     return res.status(200).send(result);     
 
   } catch (error) {
