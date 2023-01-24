@@ -36,7 +36,7 @@ router.post('/login', passport.authenticate('local-login', {
 
 router.get('/logout', (req, res, next) => {
 
-  logger_info.info(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - Email: ${req.user.email} - User: ${req.user.nombre} cerró sesión.`);  
+  //logger_info.info(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - Email: ${req.user.email} - User: ${req.user.nombre} cerró sesión.`);  
 
   req.logout(function(err) {
     if (err) { 

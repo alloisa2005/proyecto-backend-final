@@ -71,6 +71,7 @@ router.get('/cant', isLogged, async (req, res) => {
   }  
 })
 
+
 /* router.get('/cantidad', async (req, res) => {
   try {
     
