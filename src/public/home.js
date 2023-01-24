@@ -1,8 +1,9 @@
 
 document.addEventListener("DOMContentLoaded", () => {  
   let products_container = document.getElementsByClassName('products_container')[0];
-  loadProducts()
-    .then(() => cartQuantity());
+  loadProducts();
+  cartQuantity();
+    
 
   // Cargo grilla inicial con los productos
   async function loadProducts() {
@@ -45,12 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function cartQuantity(){
 
-    fetch('/api/carrito/cant')
-      .then(res => res.json())
-      .then(data => {
-        let p_cantidad = document.getElementsByClassName('cart_quantity')[0];
-        p_cantidad.innerText = data.cantidad;    
-      });   
+    let response = await fetch('/api/carrito/cant');    
+    let data = await response.json();
+
+    document.getElementsByClassName('cart_quantity')[0].innerText = data.cantidad;        
   }
 
   async function addToCart(event) {

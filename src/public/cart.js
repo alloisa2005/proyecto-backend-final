@@ -1,9 +1,5 @@
 
-document.addEventListener("DOMContentLoaded", () => { 
-
-  let p_cantidad = document.getElementsByClassName('cart_quantity')[0];
-  let p_cantidad_title = document.getElementsByClassName('cart_quantity_2')[0];
-  let products_container = document.getElementsByClassName('products_container')[0];
+document.addEventListener("DOMContentLoaded", () => {     
 
   cartQuantity();    
   loadCartProducts();
@@ -12,13 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function cartQuantity(){
     try {
-      let response = await fetch('/api/carrito/cant');
-      let data = await response.json();    
-      p_cantidad.innerText = data.cantidad;
+      let response = await fetch('/api/carrito/cant');    
+      let data = await response.json();   
+
+      document.getElementsByClassName('cart_quantity')[0].innerText = data.cantidad;
       if(data.cantidad === 1){
-        p_cantidad_title.innerText = `El carrito contiene ${data.cantidad} producto`;
+        document.getElementsByClassName('cart_quantity_2')[0].innerText = `El carrito contiene ${data.cantidad} producto`;
       }else{
-        p_cantidad_title.innerText = `El carrito contiene ${data.cantidad} productos`;
+        document.getElementsByClassName('cart_quantity_2')[0].innerText = `El carrito contiene ${data.cantidad} productos`;
       } 
     } catch (error) {
       console.log(error);
@@ -29,9 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       let response = await fetch('/api/carrito/cant');
-      let data = await response.json();
-
-      console.log(data);
+      let data = await response.json();      
 
       if(data.status === 'OK'){
         for (let i = 0; i < data.result.productos.length; i++) {
@@ -56,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
               </div>
             </div>`;
-          products_container.innerHTML += product_card;
+            document.getElementsByClassName('products_container')[0].innerHTML += product_card;
         }
 
         let btns_add = document.getElementsByClassName('btn_add');
