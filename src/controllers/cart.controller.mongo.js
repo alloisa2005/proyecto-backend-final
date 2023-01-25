@@ -6,7 +6,7 @@ class CartController {
     
     try {      
       let result = await CartModel.findOne({userId: user.id})      
-      if(!result) return {status:'OK', result:null, cantidad: 0};
+      if(!result) return {status:'OK', result:null, cantidad: 0};      
 
       let productos = result.productos;
       let cantidad = 0;
@@ -14,7 +14,7 @@ class CartController {
         cantidad += productos[i].quantity;        
       }
 
-      return {status:'OK', result, cantidad}; 
+      return {status:'OK', carrito: result, cantidad}; 
     } catch (error) {
       return {status:'ERROR', result: error.message};
     }

@@ -27,7 +27,7 @@
     try {
       let response = await fetch('/api/carrito/cant');
       let data = await response.json();      
-
+            
       if(data.status === 'OK'){
         for (let i = 0; i < data.result.productos.length; i++) {
           const product = data.result.productos[i];

@@ -63,10 +63,9 @@ router.get('/', isLogged, async (req, res) => {
 
 router.get('/cant', isLogged, async (req, res) => {  
   try {    
-    let response = await CartControllerMONGO.getMyCart(req.user);    
-    console.log(response);    
+    let response = await CartControllerMONGO.getMyCart(req.user);          
 
-    return res.status(200).send({status: response.status, result: response.result, cantidad: response.cantidad});     
+    return res.status(200).send({status: response.status, result: response.carrito, cantidad: response.cantidad});     
 
   } catch (error) {
     return res.status(404).send({status:'ERROR', result: error.message});

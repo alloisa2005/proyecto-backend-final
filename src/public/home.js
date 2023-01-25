@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
   async function cartQuantity(){
     try {
       let response = await fetch('/api/carrito/cant');    
-      let data = await response.json();      
-      
+      let data = await response.json();                  
+
       if(data.status === 'OK'){
         document.getElementById('cart_quantity').innerText = data.cantidad;        
       } 
