@@ -1,5 +1,5 @@
 
-document.addEventListener("DOMContentLoaded", () => {     
+/* document.addEventListener("DOMContentLoaded", () => {      */
 
   cartQuantity();    
   loadCartProducts();
@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
       let response = await fetch('/api/carrito/cant');    
       let data = await response.json();   
 
-      document.getElementsByClassName('cart_quantity')[0].innerText = data.cantidad;
+      document.getElementById('cart_quantity_nav').innerText = data.cantidad;
       if(data.cantidad === 1){
-        document.getElementsByClassName('cart_quantity_2')[0].innerText = `El carrito contiene ${data.cantidad} producto`;
+        document.getElementById('cart_quantity_subtitle').innerText = `El carrito contiene ${data.cantidad} producto`;
       }else{
-        document.getElementsByClassName('cart_quantity_2')[0].innerText = `El carrito contiene ${data.cantidad} productos`;
+        document.getElementById('cart_quantity_subtitle').innerText = `El carrito contiene ${data.cantidad} productos`;
       } 
     } catch (error) {
       console.log(error);
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p class="text-lg">Precio ($): ${product.price}</p>
                     <div class="flex items-center space-x-4">
                       <label class="text-lg" for="cantidad">Cantidad:</label>
-                      <input class="text-md w-[55px] text-center" type="number" name="cantidad">
+                      <input class="text-md w-[55px] text-center" type="number" name="cantidad" value="${product.quantity}">
                     </div>
                   </div>
                 </div>
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(error);
     }
   }
-});
+/* }); */
 
 /*
 

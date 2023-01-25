@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {  
   let products_container = document.getElementsByClassName('products_container')[0];
   loadProducts();
-  cartQuantity();
+ 
     
 
   // Cargo grilla inicial con los productos
@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
           const button = btns_add[i];
           button.addEventListener('click', addToCart)
         }    
+
+        cartQuantity();
       }
     } catch (error) {
       console.log(error);
@@ -45,11 +47,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function cartQuantity(){
-
-    let response = await fetch('/api/carrito/cant');    
-    let data = await response.json();
-
-    document.getElementsByClassName('cart_quantity')[0].innerText = data.cantidad;        
+    try {
+      let response = await fetch('/api/carrito/cant');    
+      let data = await response.json();      
+      
+      if(data.status === 'OK'){
+        document.getElementById('cart_quantity').innerText = data.cantidad;        
+      } 
+    } catch (error) {
+      console.log(error);
+    }    
   }
 
   async function addToCart(event) {
