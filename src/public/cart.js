@@ -1,9 +1,8 @@
 
-/* document.addEventListener("DOMContentLoaded", () => {      */
+document.addEventListener("DOMContentLoaded", () => {     
 
   cartQuantity();    
-  loadCartProducts();
-
+  loadCartProducts();  
 
 
   async function cartQuantity(){
@@ -20,14 +19,14 @@
     } catch (error) {
       console.log(error);
     }    
-  }
+  }  
 
   async function loadCartProducts() {
 
     try {
       let response = await fetch('/api/carrito/cant');
-      let data = await response.json();      
-            
+      let data = await response.json();                                    
+
       if(data.status === 'OK'){
         for (let i = 0; i < data.result.productos.length; i++) {
           const product = data.result.productos[i];
@@ -45,7 +44,7 @@
                     <p class="text-lg">Precio ($): ${product.price}</p>
                     <div class="flex items-center space-x-4">
                       <label class="text-lg" for="cantidad">Cantidad:</label>
-                      <input class="text-md w-[55px] text-center" type="number" name="cantidad" value="${product.quantity}">
+                      <input class="change_qty text-md w-[55px] text-center" type="number" name="cantidad" min="0" max="100" value="${product.quantity}">
                     </div>
                   </div>
                 </div>
@@ -54,17 +53,27 @@
             document.getElementsByClassName('products_container')[0].innerHTML += product_card;
         }
 
-        let btns_add = document.getElementsByClassName('btn_add');
-        for (let i = 0; i < btns_add.length; i++) {
-          const button = btns_add[i];
-          button.addEventListener('click', addToCart)
-        }    
+        let change_qty = document.getElementsByClassName('change_qty');
+        for (let i = 0; i < change_qty.length; i++) {
+          const button = change_qty[i];
+          button.addEventListener('change', changeQuantity)          
+        }   
+        
+        document.getElementById('cart_quantity_nav').innerText = data.cantidad;
+        if(data.cantidad === 1){
+          document.getElementById('cart_quantity_subtitle').innerText = `El carrito contiene ${data.cantidad} producto`;
+        }else{
+          document.getElementById('cart_quantity_subtitle').innerText = `El carrito contiene ${data.cantidad} productos`;
+        } 
       }
     } catch (error) {
       console.log(error);
     }
   }
-/* }); */
+
+  async function changeQuantity() {}
+  
+});
 
 /*
 

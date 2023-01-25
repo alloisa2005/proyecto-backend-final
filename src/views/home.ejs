@@ -23,7 +23,7 @@
         </a>
       <% } %>
     </div>
-  </nav>  
+  </nav>
 
   <div class="max-w-[1300px] mx-auto mt-8 px-4 "> 
     <div class="w-full py-4 text-center">
@@ -32,9 +32,27 @@
     </div>   
     <div class="products_container w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-3 mb-5">            
       <!-- Grilla con productos -->
+      <% for( let i = 0; i < productos.length; i++ ) { %>
+      
+        <div class="border border-black overflow-hidden hover:cursor-pointer rounded-md hover:shadow-xl hover:scale-105 duration-200">  
+          <p class="prod_id hidden id_product"> <%= productos[i]._id  %>  </p>
+          <p class="prod_codigo hidden"> <%= productos[i].codigo  %> </p>
+          <p class="prod_stock hidden"> <%= productos[i].stock  %> </p>
+          <img class="prod_img h-[230px] w-full object-cover" src="<%= productos[i].foto %>"  alt="">
+          <div class="p-2">
+            <p class="prod_nombre font-bold text-xl"> <%= productos[i].nombre %> </p>
+            <p class="prod_desc font-bold text-gray-700"> <%= productos[i].descripcion %> </p>
+            <div class="flex justify-between items-center">
+              <p class="prod_precio font-bold text-gray-700"> Precio ($): <%= productos[i].precio %></p>                                   
+              <img class="btn_add w-[24px] hover:cursor-pointer hover:bg-red-500 rounded-full" src="./images/add-icon.png" alt="Add Icon">
+            </div>
+          </div>
+        </div>
+
+      <% } %>
     </div>    
   </div>
-  
+
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="./home.js"></script>
 </body>

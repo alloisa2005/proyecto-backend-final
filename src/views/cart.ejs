@@ -4,7 +4,7 @@
     <a href="/" class="flex hover:cursor-pointer">
       <img class="w-[100px] " src="../images/logo.png" alt="Logo Ecommerce">      
     </a>
-    <p class="text-2xl font-bold">Bienvenido/a <%= user.nombre  %></p>    
+    <p class="text-2xl font-bold">Bienvenido/a</p>    
     <div class="flex items-center space-x-2">
       <a href="#" class="relative">
         <img class='[25px] h-[25px]' src="../images/cart-icon.png" alt="Cart">
@@ -31,7 +31,7 @@
       <div class="w-[60%] p-3">
         <p id="cart_quantity_subtitle" class="text-xl font-bold"></p>
         <!-- Card de carrito -->
-        <div class="products_container"></div>
+        <div class="products_container h-[600px] overflow-y-scroll pr-1.5"></div>
         <!-- Fin card de carrito -->
       </div>
 
@@ -42,6 +42,9 @@
           <img class="w-[100px]" src="../images/visa.png" alt="Logo Tarjeta Visa">
           <img class="w-[100px]" src="../images/master.png" alt="Logo Tarjeta Master">
           <img class="w-[100px]" src="../images/mercadoPago.png" alt="Logo Mercado Pago">          
+        </div>        
+        <div>
+          <p>Total de la Compra ($):</p>
         </div>
       </div>
     </div>

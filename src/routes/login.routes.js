@@ -10,8 +10,11 @@ const ProductController = require('../controllers/product.controller.mongo')
 ////////////// Middlewares //////////////
 const { isLogged, isNotLogged } = require('../middlewares/validaciones')
 
-router.get('/', isLogged, async (req, res) =>{             
-  res.render('homes.ejs', { title: 'Home', user: req.user });
+router.get('/', isLogged, async (req, res) =>{  
+  let response = await ProductController.getAll();
+  let productos = response.result;     
+
+  res.render('home.ejs', { title: 'Home', user: req.user, productos });
 });
 
 router.get('/register', isNotLogged, (req, res) =>{
