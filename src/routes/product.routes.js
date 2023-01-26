@@ -79,7 +79,7 @@ let admin = true;
 router.get('/', async (req, res) => {
   try {    
     
-    //logger_info.info(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - Email: ${req.user.email} - User: ${req.user.nombre}`);  
+    logger_info.info(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - Email: ${req.user.email} - User: ${req.user.nombre}`);  
 
     let result = await ProductControllerMONGO.getAll()
     

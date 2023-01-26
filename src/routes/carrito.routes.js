@@ -58,8 +58,12 @@ const { isLogged } = require('../middlewares/validaciones')
  *                $ref: '#/components/schemas/Cart'
  */
 router.get('/', isLogged, async (req, res) => {    
+  
+  let response = await CartControllerMONGO.getMyCart(req.user);
+  let cantidad = response.cantidad;
+  let carrito = response.carrito;    
 
-  res.render('cart.ejs', { title: 'My Cart', user: req.user }); 
+  res.render('cart.ejs', { title: 'My Cart', user: req.user, carrito, cantidad }); 
 })
 
 router.get('/cant', isLogged, async (req, res) => {  
