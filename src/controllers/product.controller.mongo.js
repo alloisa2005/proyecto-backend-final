@@ -15,6 +15,24 @@ class ProductController {
     }
   }
 
+  async getLikeName(cadena) {
+
+    try {      
+      let result;
+      if(cadena.length > 0){
+        result = await ProductModel.find({ nombre: new RegExp(cadena, 'i') });
+      }else{
+        result = await ProductModel.find();
+      }      
+
+      return {status:'OK', result};             
+
+    } catch (error) {
+
+      return {status:'ERROR', result: error.message};             
+    }
+  }
+
   async getById(id) {
     try {
       let result = await ProductModel.findById(id);

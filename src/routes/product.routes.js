@@ -90,6 +90,18 @@ router.get('/', async (req, res) => {
   }  
 });
 
+router.get('/name/:cadena', async (req, res) => {
+  try {        
+    let { cadena } = req.params;
+    let result = await ProductControllerMONGO.getLikeName(cadena);
+    
+    return res.status(200).send(result);          
+
+  } catch (error) {
+    res.status(404).send({status:'ERROR', result: error.message}); 
+  }  
+});
+
 /**
  * @swagger
  * /api/productos/{id}:
