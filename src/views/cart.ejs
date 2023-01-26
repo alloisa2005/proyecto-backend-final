@@ -34,17 +34,17 @@
             <% for( let i = 0; i < carrito.productos.length; i++ ) { %>
               <!-- Card de carrito -->
               <div class="py-2">
-                <div class="w-full border-2 border-gray-700 p-4 flex items-center space-x-8 rounded-lg">
+                <div class="w-full border-2 border-black/60 p-4 flex items-center space-x-8 rounded-lg">
                   <p class="id_cart hidden"> <%= carrito._id %> </p>
                   <p class="id_product hidden"> <%= carrito.productos[i].product_id %> </p>
                   <p class="prod_codigo hidden"> <%= carrito.productos[i].codigo %> </p>
                   <p class="prod_stock hidden"> <%= carrito.productos[i].stock %> </p>
-                  <img class="w-[120px]" src=" <%= carrito.productos[i].foto  %> " alt="<%= carrito.productos[i].nombre %>">
+                  <img class="w-[120px] hover:cursor-pointer hover:scale-110 duration-300" src=" <%= carrito.productos[i].foto  %> " alt="<%= carrito.productos[i].nombre %>">
                   <div class="w-full px-4">
-                    <p class="prod_nombre text-2xl font-bold"> <%= carrito.productos[i].nombre %> </p>
-                    <p class="prod_descripcion text-xl py-1"> <%= carrito.productos[i].descripcion %> </p>
+                    <p class="prod_nombre text-xl font-extrabold"> <%= carrito.productos[i].nombre %> </p>
+                    <p class="prod_descripcion text-xl py-1 text-white"> <%= carrito.productos[i].descripcion %> </p>
                     <div class="w-full flex items-center justify-between">
-                      <p class="prod_precio text-lg">Precio ($): <%= carrito.productos[i].price %> </p>
+                      <p class="prod_precio text-lg text-white">Precio ($): <%= carrito.productos[i].price %> </p>
                       <div class="flex items-center space-x-4">
                         <label class="text-lg" for="cantidad">Cantidad:</label>
                         <input class="change_qty text-md w-[55px] text-center" type="number" name="cantidad" min="0" max="100" value="<%= carrito.productos[i].quantity %>">

@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener('click', addToCart)   
   } 
 
+  let btn_search = document.getElementById('btn_search');
+  btn_search.addEventListener('click', searchProduct)
 
   async function addToCart(event) {
     let product_card = event.target.parentElement.parentElement.parentElement;
@@ -55,7 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let response = await fetch('/api/carrito/cant');
     let data = await response.json();    
 
+    console.log(data);
+
     document.getElementById('cart_quantity').innerText = data.cantidad;    
   }
 
+  async function searchProduct(e) {
+
+    let searchTXT = document.getElementById('search_text').value;    
+  }
 });
