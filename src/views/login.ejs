@@ -1,37 +1,45 @@
 <%- include('partials/header') %>
 
-  <nav class="max-w-[1300px] h-[90px] mx-auto px-4 flex justify-between items-center text-white">
-    <div class="flex">
-      <p class="text-2xl">alta<span class="text-3xl text-red-500">GAMA</span>cars</p>      
+  <div class="w-full h-screen relative">
+    <img class="absolute z-10 top-0 left-0 w-full h-screen" src="/images/bg.jpg" alt="BG">
+    <div class="absolute z-20 top-0 left-0 w-full h-screen bg-black/70"></div>
+    <div class="bg-black/90 absolute left-0 top-0 w-full h-[90px] z-30">
+      <nav class="max-w-[1300px] h-[90px] mx-auto px-4 flex justify-between items-center text-white">
+        <div class="flex">
+          <p class="text-2xl">alta<span class="text-3xl text-red-500">GAMA</span>cars</p>      
+        </div>    
+        <div>
+          <a class='text-xl font-bold hover:text-gray-600' href="/register">REGISTER</a>
+        </div>
+      </nav>
     </div>    
-    <div>
-      <a class='text-xl font-bold hover:text-gray-600' href="/register">REGISTER</a>
-    </div>
-  </nav>
 
-  <div class="max-w-[1300px]  mx-auto px-4 mt-20">
-    <div class="w-full text-center">
-      <p class="text-4xl text-white">LOGIN</p>
-    </div>
+    <div class="absolute top-[90px] left-0 right-0 max-w-[1300px]  mx-auto px-4 mt-20 z-30">
+      <div class="w-full text-center">
+        <p class="text-4xl text-white">LOGIN</p>
+      </div>
+  
+      <form action="/login" method="POST" class="max-w-[400px] mx-auto py-4">    
+        <div class="flex py-3 items-center">
+          <label class='w-[80px] font-bold text-end mr-2 text-white' for="email">Email</label>
+          <input class='flex-1 p-2' type="text" name="email" id="email">
+        </div>
+        <div class="flex py-3 items-center">
+          <label class='w-[80px] font-bold text-end mr-2 text-white' for="password">Password</label>
+          <input class='flex-1 p-2' type="password" name="password" id="password">
+        </div>      
+        <div class="w-[40%] mx-auto py-6">
+          <input class='w-full bg-white text-black rounded-lg py-2 hover:cursor-pointer hover:text-yellow-500 hover:shadow-lg' type="submit" value="Log In">
+        </div>      
+        <div class="w-[60%] mx-auto py-2 text-lg font-bold">
+          <% if (messages.error) { %>
+          <%= messages.error %> 
+          <% } %>
+        </div>
+      </form>
+    </div> 
 
-    <form action="/login" method="POST" class="max-w-[400px] mx-auto py-4">    
-      <div class="flex py-3 items-center">
-        <label class='w-[80px] font-bold text-end mr-2 text-white' for="email">Email</label>
-        <input class='flex-1 p-2' type="text" name="email" id="email">
-      </div>
-      <div class="flex py-3 items-center">
-        <label class='w-[80px] font-bold text-end mr-2 text-white' for="password">Password</label>
-        <input class='flex-1 p-2' type="password" name="password" id="password">
-      </div>      
-      <div class="w-[40%] mx-auto py-6">
-        <input class='w-full bg-white text-black rounded-lg py-2 hover:cursor-pointer hover:text-yellow-500 hover:shadow-lg' type="submit" value="Log In">
-      </div>      
-      <div class="w-[60%] mx-auto py-2 text-lg font-bold">
-        <% if (messages.error) { %>
-        <%= messages.error %> 
-        <% } %>
-      </div>
-    </form>
-  </div>  
+  </div>
+   
 </body>
 </html>
