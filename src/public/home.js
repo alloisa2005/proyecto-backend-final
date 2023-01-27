@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     imagen.addEventListener('click', (e) => {
       let card = e.target.parentElement;
       let id_prod = card.getElementsByClassName('prod_id')[0].innerText;
-      fetch('api/productos/detail')
+      
     });
   }
 

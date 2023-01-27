@@ -1,8 +1,8 @@
 <%- include('partials/header') %>
 
-  <nav class="max-w-[1300px] h-[90px] mx-auto px-4 flex justify-between items-center text-white">
+  <nav class="absolute top-0 left-0 right-0 z-30 max-w-[1300px] h-[90px] mx-auto px-4 flex justify-between items-center text-white">
     <a href="/" class="flex hover:cursor-pointer">
-      <p class="text-2xl">alta<span class="text-3xl text-red-500">GAMA</span>cars</p>      
+      <p class="text-2xl">alta<span class="text-3xl text-red-500">GAMA</span>cars</p>
     </a>
     <p class="text-2xl font-bold text-white">Bienvenido/a <%= user.nombre  %></p>   
     <div class="flex items-center space-x-2">
@@ -25,6 +25,14 @@
     </div>
   </nav>
 
-  <div class="max-w-[1300px] mx-auto px-4">
-    <%= producto.nombre %> 
+  <div class="relative  w-full h-[430px]">
+    <img class="w-full h-full object-cover" src="<%= producto.foto %> " alt="<%= producto.nombre %> ">
+    <div class="absolute top-0 left-0 w-full h-full bg-black/40"></div>
+    <div class="absolute top-0 left-0 right-0 z-20 max-w-[1300px] h-full mx-auto flex items-center justify-start">
+      <p class="font-['Poppins'] text-white text-6xl font-bold"><%= producto.nombre %> </p>
+    </div>
+  </div>
+
+  <div class="max-w-[1300px] mx-auto px-4 py-4 text-white font-['Poppins'] bg-red-500">
+    <p class="text-2xl">Características</p>
   </div>

@@ -104,7 +104,7 @@ router.get('/name/:cadena', async (req, res) => {
 router.get('/detail/:id_prod', isLogged, async (req, res) => {
 
   let { id_prod } = req.params;
-  let producto = await ProductControllerMONGO.getById(id_prod);  
+  let producto = await ProductControllerMONGO.getById(id_prod);    
 
   res.render('productDetail.ejs', { title: 'Product Detail', user: req.user, producto: producto.result });
 });
