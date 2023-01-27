@@ -638,3 +638,23 @@
 [2023-01-26T16:02:59.247] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: pepe@gmail.com - User: Pepe
 [2023-01-26T16:03:16.537] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: pepe@gmail.com - User: Pepe
 [2023-01-26T16:03:30.345] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: pepe@gmail.com - User: Pepe
+[2023-01-27T09:11:57.391] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:12:14.930] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:12:26.785] [INFO] INFO - Ruta GET - "localhost:8080/api/productos" accedida - Email: pepe@gmail.com - User: Pepe
+[2023-01-27T09:13:18.396] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:13:54.724] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:14:59.363] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:16:44.412] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:17:10.850] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:18:19.571] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:18:52.437] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:19:01.154] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:19:10.535] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:19:17.253] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:19:37.622] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:20:20.236] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:20:40.556] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:21:06.853] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:21:29.500] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:22:13.655] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
+[2023-01-27T09:23:44.835] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe logueado.
