@@ -9,6 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener('click', addToCart)   
   }   
 
+  let imagenes = document.getElementsByClassName('prod_img');
+  for (let i = 0; i < imagenes.length; i++) {
+    const imagen = imagenes[i];
+    imagen.addEventListener('click', (e) => {
+      let card = e.target.parentElement;
+      let id_prod = card.getElementsByClassName('prod_id')[0].innerText;
+      fetch('api/productos/detail')
+    });
+  }
+
+
   async function addToCart(event) {
     let product_card = event.target.parentElement.parentElement.parentElement;
 

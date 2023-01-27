@@ -38,7 +38,9 @@
           <p class="prod_id hidden id_product"> <%= productos[i]._id  %>  </p>
           <p class="prod_codigo hidden"> <%= productos[i].codigo  %> </p>
           <p class="prod_stock hidden"> <%= productos[i].stock  %> </p>          
-          <img class="prod_img h-[250px] w-full object-cover grayscale group-hover:grayscale-0" src="<%= productos[i].foto %>"  alt="">          
+          <a href="/api/productos/detail/<%= productos[i]._id %>">
+            <img class="prod_img h-[250px] w-full object-cover grayscale group-hover:grayscale-0" src="<%= productos[i].foto %>"  alt="">          
+          </a>
           <div class="p-2">
             <p class="prod_nombre font-extrabold text-lg"> <%= productos[i].nombre %> </p>
             <p class="prod_desc font-bold text-white"> <%= productos[i].descripcion %> </p>
