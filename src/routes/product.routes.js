@@ -10,7 +10,6 @@ const { logger_info, logger_warn, logger_error } = require('../logs/log_config')
 // Middlewares
 const { validarInputsProduct, isLogged } = require('../middlewares/validaciones')
 
-let admin = true;
 
 /**
  * @swagger
@@ -100,6 +99,10 @@ router.get('/name/:cadena', async (req, res) => {
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
   }  
+});
+
+router.get('/detail', isLogged, (req, res) => {
+  res.render('productDetail.ejs', { title: 'Home', user: req.user });
 });
 
 /**

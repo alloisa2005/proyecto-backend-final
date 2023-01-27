@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+
+  <nav class="max-w-[1300px] h-[90px] mx-auto px-4 flex justify-between items-center text-white">
+    <a href="/" class="flex hover:cursor-pointer">
+      <p class="text-2xl">alta<span class="text-3xl text-red-500">GAMA</span>cars</p>      
+    </a>
+    <p class="text-2xl font-bold text-white">Bienvenido/a <%= user.nombre  %></p>   
+    <div class="flex items-center space-x-2">
+      <a href="#" class="relative">
+        <img class='[25px] h-[25px]' src="../images/cart-icon.png" alt="Cart">
+        <div class="p-3 absolute -right-2 -top-2 bg-blue-500/90 rounded-full  h-[17px] w-[17px] flex items-center justify-center">
+          
+        </div>
+      </a>
+      <a class='text-xl font-bold hover:text-gray-600' href="/logout">
+        <div class='w-[45px] h-[45px] duration-300 flex justify-center items-center'>
+          <img class='w-[25px] h-[25px]' src="../images/close-session.png" alt="Close">
+        </div>
+      </a>
+      <% if (user.isAdmin === 'S') { %>        
+        <a href="#">
+          <img class='w-[50px] h-[50px] object-contain' src="../images/profile.png" alt="Profile">
+        </a>
+      <% } %>
+    </div>
+  </nav>
+
+  <div class="max-w-[1300px] mx-auto px-4">
+    JAJAJA
+  </div>
