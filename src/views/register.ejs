@@ -1,9 +1,82 @@
 <%- include('partials/header') %>
 
+  <div class="w-full  relative">
+    <img class="absolute z-10 top-0 left-0 w-full h-screen" src="/images/bg.jpg" alt="BG">
+    <div class="absolute z-20 top-0 left-0 w-full h-screen bg-black/70"></div>
+    <div class="bg-black/90 absolute left-0 top-0 w-full h-[90px] z-30">
+      <nav class="max-w-[1300px] h-[90px] mx-auto px-4 flex justify-between items-center text-white">
+        <a href="/" class="flex">
+          <p class="text-2xl">alta<span class="text-3xl text-red-500">GAMA</span>cars</p>      
+        </a>    
+        <div>
+          <a class='text-xl font-bold hover:text-gray-600' href="/login">LOGIN</a>
+        </div>
+      </nav>
+    </div>    
+
+    <div class="absolute top-[90px] left-0 right-0 max-w-[650px] bg-white mx-auto py-8 px-4 mt-20 z-30 bg-opacity-40 backdrop-blur-sm rounded-lg drop-shadow-lg">
+      <div class="w-full text-center">
+        <p class="text-4xl text-white">REGISTER USER</p>
+      </div>
+      
+      <div class="w-full mx-auto text-2xl font-bold pt-2">
+        <% if (messages.error) { %>
+        <p class="text-center text-red-800"> <%= messages.error %>  </p>
+        <% } %>
+      </div>
+
+      <form action="/register" method="POST" class="max-w-[700px] mx-auto">    
+        <div class="flex items-center justify-between space-x-3">
+          <div class="flex flex-col py-2 flex-1">
+            <label class='font-bold text-white text-lg' for="email">Email</label>
+            <input class='flex-1 p-3 outline-none rounded-xl' type="text" name="email" id="email" required>
+          </div>
+          <div class="flex flex-col py-2 flex-1">
+            <label class='font-bold text-white text-lg' for="password">Password</label>
+            <input class='flex-1 p-3 outline-none rounded-xl' type="password" name="password" id="password" required>
+          </div>
+        </div> 
+        <div class="flex items-center justify-between space-x-3">
+          <div class="flex flex-col py-2 flex-1">
+            <label class='font-bold text-white text-xl' for="name">Nombre</label>
+            <input class='flex-1 p-3 outline-none rounded-xl' type="text" name="name" id="name" required>
+          </div>   
+          <div class="flex flex-col py-2 flex-1">
+            <label class='font-bold text-white text-xl' for="direccion">Dirección</label>
+            <input class='flex-1 p-3 outline-none rounded-xl' type="text" name="direccion" id="direccion" required>
+          </div> 
+        </div> 
+        <div class="flex items-center justify-between space-x-3">
+          <div class="flex flex-col py-2 flex-1">
+            <label class='font-bold text-white text-xl' for="telefono">Teléfono</label>
+            <input class='flex-1 p-3 outline-none rounded-xl' type="text" name="telefono" id="telefono" required>
+          </div> 
+          <div class="flex flex-col py-2">
+            <label class='font-bold text-white text-xl' for="edad">Edad</label>
+            <input class='flex-1 p-3 outline-none rounded-xl' type="number" name="edad" id="edad" min="1" max="100" required>
+          </div>             
+        </div>
+        <div class="w-[50%] mx-auto pt-4">
+          <input class='w-full bg-white text-black hover:bg-black hover:text-white hover:shadow-lg duration-300 rounded-lg py-2 hover:cursor-pointer' type="submit" value="Register">
+        </div>                     
+        <div class="w-full flex justify-center">
+          <a href="/login" class="text-center text-lg text-black hover:text-white hover:cursor-pointer pt-3">Go to Login Page</a>                
+        </div> 
+        
+      </form>
+    </div> 
+
+  </div>
+   
+</body>
+</html>
+
+<!-- <%- include('partials/header') %>
+
   <nav class="max-w-[1300px] h-[90px] mx-auto px-4 flex justify-between items-center">
-    <div class="flex">
-      <img class="w-[60px]" src="./images/logo.png" alt="Logo Ecommerce">      
-    </div>
+    <a href="/" class="flex">
+      <p class="text-2xl">alta<span class="text-3xl text-red-500">GAMA</span>cars</p>      
+    </a>
     <div>
       <a class='text-2xl font-bold hover:text-gray-600' href="/login">LOGIN</a>
     </div>
@@ -55,4 +128,4 @@
   </div>  
 
 </body>
-</html>
+</html> -->
