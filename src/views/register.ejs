@@ -25,7 +25,7 @@
         <% } %>
       </div>
 
-      <form action="/register" method="POST" class="max-w-[700px] mx-auto">    
+      <form action="/register" method="POST" enctype="multipart/form-data" class="max-w-[700px] mx-auto">    
         <div class="flex items-center justify-between space-x-3">
           <div class="flex flex-col py-2 flex-1">
             <label class='font-bold text-white text-lg' for="email">Email</label>
@@ -56,6 +56,10 @@
             <input class='flex-1 p-3 outline-none rounded-xl' type="number" name="edad" id="edad" min="1" max="100" required>
           </div>             
         </div>
+        <div class="flex flex-col py-2">
+          <label class='font-bold text-white text-xl' for="foto">Foto</label>
+          <input class='flex-1 p-3 outline-none rounded-xl' type="file" name="foto" id="foto">
+        </div> 
         <div class="w-[50%] mx-auto pt-4">
           <input class='w-full bg-white text-black hover:bg-black hover:text-white hover:shadow-lg duration-300 rounded-lg py-2 hover:cursor-pointer' type="submit" value="Register">
         </div>                     

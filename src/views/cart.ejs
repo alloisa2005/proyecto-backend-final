@@ -29,9 +29,9 @@
     <div class="flex ">
       <!-- Lista de prods en el carrito -->
       <div class="w-[60%] p-3">
-        <p id="cart_quantity_subtitle" class="text-white text-xl font-bold">El carrito contiene <%= cantidad %> productos</p>        
+        <p id="cart_quantity_subtitle" class="text-white text-2xl font-bold">El carrito contiene <%= cantidad %> productos</p>        
         <div class="products_container h-[600px] overflow-y-scroll pr-1.5">
-            <% for( let i = 0; i < carrito.productos.length; i++ ) { %>
+            <% for( let i = 0; i < carrito.productos.length; i++ ) { %> 
               <!-- Card de carrito -->
               <div class="py-2">
                 <div class="w-full border-2 border-black/60 p-4 flex items-center space-x-8 rounded-lg">

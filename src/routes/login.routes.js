@@ -7,6 +7,8 @@ const { logger_info } = require('../logs/log_config');
 
 const ProductController = require('../controllers/product.controller.mongo')
 
+const upload = require('../multer.config');
+
 ////////////// Middlewares //////////////
 const { isLogged, isNotLogged } = require('../middlewares/validaciones')
 
@@ -21,7 +23,7 @@ router.get('/register', isNotLogged, (req, res) =>{
   res.render('register.ejs', {title: 'Register'});
 });
 
-router.post('/register', passport.authenticate('local-register', {
+router.post('/register', upload.single('foto'), passport.authenticate('local-register', {
   successRedirect: '/login',
   failureRedirect: '/register',
   failureFlash: true

@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  cartCantidad();
+  //cartCantidad();
 
   let btns_add = document.getElementsByClassName('btn_add');
   for (let i = 0; i < btns_add.length; i++) {
@@ -57,10 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }  
 
-    cartCantidad();
+    //cartCantidad();
   }
 
-  async function cartCantidad() {
+  /* async function cartCantidad() {
 
     let response = await fetch('/api/carrito/cant');
     let data = await response.json();    
@@ -68,6 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
     //console.log(data);
 
     document.getElementById('cart_quantity').innerText = data.cantidad;    
-  }  
+  }   */
 
 });

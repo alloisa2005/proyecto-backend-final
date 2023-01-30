@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
   async function changeQuantity(e) {
     let card_carrito = e.target.parentElement.parentElement.parentElement.parentElement;
 
-    console.log(card_carrito.getElementsByClassName('id_cart')[0].innerText);
-    console.log(card_carrito.getElementsByClassName('id_product')[0].innerText);
+    //console.log(card_carrito.getElementsByClassName('id_cart')[0].innerText);
+    //console.log(card_carrito.getElementsByClassName('id_product')[0].innerText);
   }
   
 });

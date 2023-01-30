@@ -20,8 +20,8 @@ passport.use('local-register', new localStrategy({
   usernameField: 'email',
   passwordField: 'password',
   passReqToCallback: true
-}, async (req, email, password, done)=>{
-  
+}, async (req, email, password, done)=>{      
+
     let user = await UserModel.findOne({ email: email});
     if(user) return done(null, false, { message: 'Email ya registrado'});
     
@@ -34,7 +34,7 @@ passport.use('local-register', new localStrategy({
     user.direccion = req.body.direccion;
     user.edad = req.body.edad;
     user.telefono = req.body.telefono;
-    user.foto = req.body.foto;
+    user.foto = req.fotoName;
 
     await user.save();
 

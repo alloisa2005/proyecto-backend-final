@@ -61,7 +61,7 @@ router.get('/', isLogged, async (req, res) => {
   
   let response = await CartControllerMONGO.getMyCart(req.user);
   let cantidad = response.cantidad;
-  let carrito = response.carrito;    
+  let carrito = response.carrito;      
 
   res.render('cart.ejs', { title: 'My Cart', user: req.user, carrito, cantidad }); 
 })

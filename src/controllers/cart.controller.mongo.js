@@ -5,8 +5,8 @@ class CartController {
   async getMyCart(user) {
     
     try {      
-      let result = await CartModel.findOne({userId: user.id})      
-      if(!result) return {status:'OK', result:null, cantidad: 0};      
+      let result = await CartModel.findOne({userId: user.id})           
+      if(!result) return {status:'OK', carrito: { productos: [] }, cantidad: 0};            
 
       let productos = result.productos;
       let cantidad = 0;

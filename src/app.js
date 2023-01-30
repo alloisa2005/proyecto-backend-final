@@ -14,7 +14,6 @@ const compression = require('compression');
 const path = require('path'); 
 const passport = require('passport');
 
-
 const routerProductos = require('./routes/product.routes')
 const routerCarrito = require('./routes/carrito.routes')
 const routerLogin = require('./routes/login.routes')
@@ -36,6 +35,8 @@ const optionsSwagger = {
   },
   apis: [`${path.join(__dirname, './routes/*.js')}`]
 }
+
+
 
 //////// Conexión MongoDB ////////
 require('./database');
