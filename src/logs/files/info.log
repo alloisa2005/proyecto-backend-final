@@ -70,3 +70,5 @@
 [2023-01-30T15:15:36.448] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe Castro logueado.
 [2023-01-30T15:16:05.772] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe Castro logueado.
 [2023-01-30T15:16:47.568] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: pepe@gmail.com - User: Pepe Castro logueado.
+[2023-01-30T16:22:09.408] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: jason@gmail.com - User: Jason Voorhes registrado.
+[2023-01-30T16:24:14.738] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: lolo@asas.com - User: Lolo registrado.
