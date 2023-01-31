@@ -17,6 +17,7 @@ const passport = require('passport');
 const routerProductos = require('./routes/product.routes')
 const routerCarrito = require('./routes/carrito.routes')
 const routerLogin = require('./routes/login.routes')
+const routerCompra = require('./routes/compra.routes')
 
 const UserController = require('./controllers/user.controller.mongo')
 
@@ -76,7 +77,8 @@ if(cluster.isPrimary) {
   app.use('/api/productos', routerProductos);
   app.use('/api/carrito', routerCarrito);  
   app.use('/', routerLogin);
-
+  app.use('/api/compras', routerCompra);
+  
   // Ruta para documentación SWAGGER
   app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(optionsSwagger)))
   

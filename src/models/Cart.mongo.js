@@ -15,7 +15,8 @@ const cartSchema = mongoose.Schema({
     stock: {type:Number, required: true},
   }],
   cantidad: {type: Number },
-  subTotal: {type: Number, default: 0 }
+  subTotal: {type: Number, default: 0 },
+  activo: {type: Boolean, default: true }
 }, {timestamps: true})
 
 module.exports = mongoose.model('Cart', cartSchema)
