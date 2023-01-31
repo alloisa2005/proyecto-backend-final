@@ -4,12 +4,11 @@
     <a href="/" class="flex hover:cursor-pointer">
       <p class="text-2xl">alta<span class="text-3xl text-red-500">GAMA</span>cars</p>
     </a>
-    <p class="text-2xl font-bold text-white">Bienvenido/a <%= user.nombre  %></p>   
-    <div class="flex items-center space-x-2">
+    
+    <div class="flex items-center space-x-2"> 
       <a href="#" class="relative">
         <img class='[25px] h-[25px]' src="../images/cart-icon.png" alt="Cart">
-        <div class="p-3 absolute -right-2 -top-2 bg-blue-500/90 rounded-full  h-[17px] w-[17px] flex items-center justify-center">
-          
+        <div class="p-3 absolute -right-2 -top-2 bg-blue-500/90 rounded-full  h-[17px] w-[17px] flex items-center justify-center">          
         </div>
       </a>
       <a class='text-xl font-bold hover:text-gray-600' href="/logout">
@@ -34,9 +33,9 @@
     <div class="absolute bottom-0 left-0 h-[80px] w-full bg-gradient-to-t from-gray-600  to-transparent"></div>
   </div>
 
-  <div class="max-w-[1300px] mx-auto px-4 py-4 text-white font-['Poppins']">
-    <p class="text-3xl py-4">Características</p>
-    <div class="py-4 w-full grid grid-cols-1 md:grid-cols-4 gap-8">
+  <div class="max-w-[1300px] mx-auto px-4 py-1 text-white font-['Poppins']">
+    <p class="text-3xl py-2">Características</p>
+    <div class="py-2 w-full grid grid-cols-1 md:grid-cols-4 gap-8">
       <div class="text-black bg-white border-2 border-white p-3 flex items-center rounded-lg space-x-5 shadow-lg hover:shadow-xl">
         <img class="h-[60px]" src="https://cdn-icons-png.flaticon.com/512/1104/1104342.png" alt="Chasis">
         <p class="text-lg font-bold">Carrocería: <%= producto.caracteristicas.carroceria %> </p>
@@ -54,4 +53,16 @@
         <p class="text-lg font-bold">Plazas: <%= producto.caracteristicas.plazas %> </p>
       </div>
     </div>
+
+    <div class="w-full py-12 flex items-center space-x-12">
+      <p class="text-3xl">Precio ($): <%= producto.precio %> </p>
+      <div class="w-[15%]">
+        <input class='w-full bg-white text-black hover:bg-black hover:text-white hover:shadow-xl duration-300 rounded-lg py-2 hover:cursor-pointer' type="submit" value="Añadir al Carrito">
+      </div> 
+    </div>
+
   </div>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>      
+  </body>
+</html>  
