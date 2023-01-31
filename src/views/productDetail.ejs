@@ -28,7 +28,7 @@
     <img class="w-full h-full object-cover" src="<%= producto.foto %> " alt="<%= producto.nombre %> ">
     <div class="absolute top-0 left-0 w-full h-full bg-black/40"></div>
     <div class="absolute top-0 left-0 right-0 z-20 max-w-[1300px] h-full mx-auto flex items-center justify-start">
-      <p class="font-['Poppins'] text-white text-6xl font-bold"><%= producto.nombre %> </p>
+      <p class="font-['Poppins'] text-white text-6xl font-bold"><%= producto.nombre %> </p>      
     </div>
     <div class="absolute bottom-0 left-0 h-[80px] w-full bg-gradient-to-t from-gray-600  to-transparent"></div>
   </div>
@@ -57,12 +57,14 @@
     <div class="w-full py-12 flex items-center space-x-12">
       <p class="text-3xl">Precio ($): <%= producto.precio %> </p>
       <div class="w-[15%]">
-        <input class='w-full bg-white text-black hover:bg-black hover:text-white hover:shadow-xl duration-300 rounded-lg py-2 hover:cursor-pointer' type="submit" value="Añadir al Carrito">
+        <input id="btn_add" class='w-full bg-white text-black hover:bg-black hover:text-white hover:shadow-xl duration-300 rounded-lg py-2 hover:cursor-pointer' type="submit" value="Añadir al Carrito">
       </div> 
-    </div>
+    </div> 
 
   </div>
 
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>      
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>     
   </body>
 </html>  
+
+
