@@ -25,10 +25,14 @@
   </nav>
 
   <div class="relative w-full h-[430px]">
-    <img class="w-full h-full object-cover" src="<%= producto.foto %> " alt="<%= producto.nombre %> ">
+    <p id="prod_id" class="hidden"><%= producto._id %> </p>
+    <p id="prod_desc" class="hidden"><%= producto.descripcion %> </p>
+    <p id="prod_codigo" class="hidden"><%= producto.codigo %> </p>
+    <p id="prod_stock" class="hidden"><%= producto.stock %> </p>
+    <img id="prod_foto" class="w-full h-full object-cover" src="<%= producto.foto %> " alt="<%= producto.nombre %> ">
     <div class="absolute top-0 left-0 w-full h-full bg-black/40"></div>
     <div class="absolute top-0 left-0 right-0 z-20 max-w-[1300px] h-full mx-auto flex items-center justify-start">
-      <p class="font-['Poppins'] text-white text-6xl font-bold"><%= producto.nombre %> </p>      
+      <p id="prod_nombre" class="font-['Poppins'] text-white text-6xl font-bold"><%= producto.nombre %> </p>      
     </div>
     <div class="absolute bottom-0 left-0 h-[80px] w-full bg-gradient-to-t from-gray-600  to-transparent"></div>
   </div>
@@ -55,7 +59,7 @@
     </div>
 
     <div class="w-full py-12 flex items-center space-x-12">
-      <p class="text-3xl">Precio ($): <%= producto.precio %> </p>
+      <p id="prod_precio" class="text-3xl">Precio ($): <%= producto.precio %> </p>
       <div class="w-[15%]">
         <input id="btn_add" class='w-full bg-white text-black hover:bg-black hover:text-white hover:shadow-xl duration-300 rounded-lg py-2 hover:cursor-pointer' type="submit" value="Añadir al Carrito">
       </div> 
@@ -64,6 +68,46 @@
   </div>
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>     
+  <script>
+      let btn_add = document.getElementById('btn_add');
+      btn_add.addEventListener('click', addToCart);
+
+      async function addToCart(event) {
+        let prod_id = document.getElementById('prod_id').innerText;
+        let prod_foto = document.getElementById('prod_foto').src;
+        let prod_nombre = document.getElementById('prod_nombre').innerText;
+        let prod_precio = parseFloat(document.getElementById('prod_precio').innerText.replace('Precio ($):',''));
+        let prod_desc = document.getElementById('prod_desc').innerText;
+        let prod_codigo = document.getElementById('prod_codigo').innerText;
+        let prod_stock = parseInt(document.getElementById('prod_stock').innerText);    
+
+        let producto = { 
+          product_id: prod_id,
+          quantity: 1,
+          price: prod_precio,
+          nombre: prod_nombre,
+          descripcion: prod_desc,
+          codigo: prod_codigo,
+          foto: prod_foto,
+          stock: prod_stock
+        }
+
+        let response = await fetch('/api/carrito', {
+          method: 'POST', 
+          headers: {
+            'Content-Type': 'application/json'
+          }, 
+          body: JSON.stringify({producto}) 
+        });
+        let data = await response.json();
+        
+        if(data.status === 'OK') {          
+          swal(prod_nombre, "¡añadido al carrito!", "success", {
+            button: "Aceptar",
+          });
+        }      
+      }
+  </script>
   </body>
 </html>  
 

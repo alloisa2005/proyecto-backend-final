@@ -55,9 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
       swal(prod_nombre, "¡añadido al carrito!", "success", {
         button: "Aceptar",
       });
-    }  
-
-    //cartCantidad();
+    }      
   }
 
   /* async function cartCantidad() {
