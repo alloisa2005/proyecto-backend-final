@@ -34,8 +34,9 @@ class ProductController {
   }
 
   async getById(id) {
-    try {
-      let result = await ProductModel.findById(id);
+    try {            
+
+      let result = await ProductModel.findById(id);      
       if(!result) return {status: 'ERROR', result: `No existe producto ID: ${id}`};
 
       return {status:'OK', result};

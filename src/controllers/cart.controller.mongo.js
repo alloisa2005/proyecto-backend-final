@@ -1,4 +1,6 @@
+const mongoose = require('mongoose');
 const CartModel = require('../models/Cart.mongo')
+const ProductControllerMONGO = require('./product.controller.mongo')
 
 class CartController {
 
@@ -34,15 +36,23 @@ class CartController {
   async createCart(prod, userId) {    
     try {      
 
+      let prod_id = prod.product_id.trim();      
+
       // Miro si el user ya tiene un carrito creado
-      let cart = await CartModel.findOne({userId});            
-      
+      let cart = await CartModel.findOne({userId});                        
+
       // Si existe el carrito, le agrego productos
-      if(cart) return await this.addProductToCart(cart._id, prod);        
-      
+      if(cart) return await this.addProductToCart(cart._id, prod);                    
+
       // Sino creo el carrito y le agrego el producto elegido
       let subTotal = prod.quantity * prod.price;
       let result = await CartModel.create({userId, productos: prod, subTotal}); 
+      
+      let response = await ProductControllerMONGO.getById(prod_id);
+      let prod_stock = response.result.stock;
+      prod_stock-= 1;
+      let jaja = await ProductControllerMONGO.editProduct(prod_id, {stock: prod_stock})      
+
       return {status:'OK', result};
     } catch (error) {
       return {status:'ERROR', result: error.message};
@@ -59,13 +69,15 @@ class CartController {
   }
 
   async addProductToCart(id_cart, producto) {
-    try {
+    try {      
+      let prod_id = producto.product_id.trim()      
+
       let cart = await CartModel.findById(id_cart)
       if(!cart) return {status: 'ERROR', result: `No existe carrito ID: ${id_cart}`}
 
       // Productos que hay en el carro
       let productos = cart.productos;    
-      let prod_buscado = productos.find( p => p.product_id === producto.product_id);
+      let prod_buscado = productos.find( p => p.product_id === prod_id);
 
       // Si el prod ya existe en el carro, aumento su cantidad y actualizo subtotal del carro    
       if(prod_buscado){
@@ -76,6 +88,13 @@ class CartController {
         cart.subTotal += (producto.quantity * producto.price)
       }
       let resp = await CartModel.findByIdAndUpdate({_id: id_cart}, {subTotal:cart.subTotal, productos})
+
+      let response = await ProductControllerMONGO.getById(prod_id);      
+
+      let prod_stock = response.result.stock;
+      prod_stock-= 1;
+      let jaja = await ProductControllerMONGO.editProduct(prod_id, {stock: prod_stock})      
+
       return {status:'OK', result:resp};
 
     } catch (error) {

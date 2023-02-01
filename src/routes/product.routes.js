@@ -136,7 +136,7 @@ router.get('/detail/:id_prod', isLogged, async (req, res) => {
  *              type: object
  *              $ref: '#/components/schemas/Product' 
  */
-router.get('/:id', isLogged, async (req, res) => {  
+router.get('/:id', async (req, res) => {  
   let { id } = req.params;
   try {    
       
