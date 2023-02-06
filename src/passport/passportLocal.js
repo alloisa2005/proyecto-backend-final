@@ -1,6 +1,8 @@
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy
 const bcrypt = require('bcryptjs');
+const cloudinary = require('../utils/cloudinary.config');
+
 const UserModel = require('../models/User.mongo')
 
 const { enviarMail } = require('../utils/enviarMail');
@@ -27,6 +29,9 @@ passport.use('local-register', new localStrategy({
     
     let hashedPassword = await bcrypt.hash(password, 12);
 
+    // Guardo la imagen del usuario en cloudinary y guardo en la BD el link a la misma
+    let cloud = await cloudinary.uploader.upload(req.file.path, {folder: process.env.CLOUDINARY_FOLDER});
+
     user = new UserModel();
     user.email= email;
     user.password = hashedPassword;
@@ -34,7 +39,7 @@ passport.use('local-register', new localStrategy({
     user.direccion = req.body.direccion;
     user.edad = req.body.edad;
     user.telefono = req.body.telefono;
-    user.foto = req.fotoName;
+    user.foto = cloud.url;
 
     await user.save();
 

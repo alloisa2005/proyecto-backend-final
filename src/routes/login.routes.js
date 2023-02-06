@@ -7,7 +7,7 @@ const { logger_info } = require('../logs/log_config');
 
 const ProductController = require('../controllers/product.controller.mongo')
 
-const upload = require('../multer.config');
+const upload = require('../utils/multer.config');
 
 ////////////// Middlewares //////////////
 const { isLogged, isNotLogged } = require('../middlewares/validaciones')
