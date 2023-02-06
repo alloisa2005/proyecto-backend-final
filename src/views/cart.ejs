@@ -45,7 +45,7 @@
                     <p class="prod_descripcion text-xl py-1 text-white"> <%= carrito.productos[i].descripcion %> </p>
                     <div class="w-full flex items-center justify-between">
                       <p class="prod_precio text-lg text-white">Precio ($): <%= carrito.productos[i].price %> </p>
-                      <a class="text-lg text-white hover:text-black hover:scale-110 duration-300" href="#">Eliminar</a>
+                      <a class="btn_eliminar text-lg text-white hover:text-black hover:scale-110 duration-300" href="#">Eliminar</a>
                       <div class="flex items-center space-x-4">
                         <label class="text-lg" for="cantidad">Cantidad:</label>
                         <input class="change_qty text-md w-[55px] text-center" type="number" name="cantidad" min="0" max="100" value="<%= carrito.productos[i].quantity %>">
