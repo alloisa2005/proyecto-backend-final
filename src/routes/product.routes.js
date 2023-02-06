@@ -6,7 +6,7 @@ const router = Router();
 const ProductControllerMONGO = require('../controllers/product.controller.mongo')
 
 ////////////////  LOGGER///////////////
-const { logger_info, logger_warn, logger_error } = require('../logs/log_config');
+const { logger_info } = require('../logs/log_config');
 
 // Middlewares
 const { validarInputsProduct, isLogged } = require('../middlewares/validaciones')
@@ -76,7 +76,7 @@ const { validarInputsProduct, isLogged } = require('../middlewares/validaciones'
  *                  items:
  *                    $ref: '#/components/schemas/Product'
  */
-router.get('/', async (req, res) => {
+ router.get('/', async (req, res) => {
   try {    
     
     logger_info.info(`Ruta ${req.method} - "${req.hostname}:${req.socket.localPort}${req.baseUrl}" accedida - Email: ${req.user.email} - User: ${req.user.nombre}`);  
@@ -88,7 +88,7 @@ router.get('/', async (req, res) => {
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
   }  
-});
+}); 
 
 router.get('/name/:cadena', async (req, res) => {
   try {        

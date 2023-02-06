@@ -15,9 +15,16 @@
               <a href="/api/carrito">Mi Carrito</a>
             </li>
             <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">Mis Compras</li>
+            <% if (user.isAdmin === 'S') { %>
+              <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500 flex items-center space-x-2">
+                <img class="w-[25px] object-cover" src="./images/aaa.png" 
+                    alt="Settings Icon">
+                <p>Admin</p>
+              </li>
+            <% } %>
             <li class="pb-1 text-lg font-bold hover:cursor-pointer px-2 hover:bg-red-500">
               <a href="/logout">Logout</a>
-            </li>
+            </li>            
           </ul>  
         </li> 
         <li>

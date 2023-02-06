@@ -1,17 +1,19 @@
 const ProductModel = require('../models/Product.mongo');
+const { logger_info } = require('../logs/log_config');
 
 class ProductController {
 
   async getAll() {
 
-    try {
+    try {      
 
       let result = await ProductModel.find()
-      return {status:'OK', result};             
+      return {status:'OK', result};
+      
 
     } catch (error) {
 
-      return {status:'ERROR', result: error.message};             
+      return {status:'ERROR', result: error.message}; 
     }
   }
 
