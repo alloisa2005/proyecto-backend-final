@@ -299,7 +299,7 @@ router.post('/:id/productos', async (req, res) => {
 });
 
 router.delete('/:id_cart/productos/:id_prod', async (req, res) => {
-
+  
   let { id_cart, id_prod } = req.params;
 
   try {    

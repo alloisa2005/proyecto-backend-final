@@ -10,7 +10,7 @@ const ProductController = require('../controllers/product.controller.mongo')
 const upload = require('../utils/multer.config');
 
 ////////////// Middlewares //////////////
-const { isLogged, isNotLogged } = require('../middlewares/validaciones')
+const { isLogged, isNotLogged } = require('../middlewares/validaciones');
 
 router.get('/', isLogged, async (req, res) =>{  
   let response = await ProductController.getAll();
@@ -50,6 +50,7 @@ router.get('/logout', (req, res, next) => {
     res.redirect('/login');
   });
   
-});
-  
+});  
+
+
 module.exports = router;
