@@ -82,3 +82,5 @@
 [2023-02-10T16:28:25.723] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: kaka@gmail.com - User: Kaka registrado.
 [2023-02-10T16:30:44.775] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: Anthony Allois registrado.
 [2023-02-10T16:31:03.867] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: Anthony Allois logueado.
+[2023-02-13T09:42:35.856] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: Anthony Allois registrado.
+[2023-02-13T10:02:03.296] [INFO] INFO - Ruta POST - "localhost:8080" accedida - Email: tony@gmail.com - User: Anthony Allois logueado.
