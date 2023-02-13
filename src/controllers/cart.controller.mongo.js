@@ -7,7 +7,9 @@ class CartController {
   async getMyCart(user) {
     
     try {      
-      let result = await CartModel.findOne({userId: user.id})           
+      let result = await CartModel.findOne({user: user.id}) 
+      console.log(result);          
+      
       if(!result) return {status:'OK', carrito: { productos: [] }, cantidad: 0};            
 
       let productos = result.productos;
@@ -46,7 +48,7 @@ class CartController {
 
       // Sino creo el carrito y le agrego el producto elegido
       let subTotal = prod.quantity * prod.price;
-      let result = await CartModel.create({userId, productos: prod, subTotal}); 
+      let result = await CartModel.create({user: userId, productos: prod, subTotal}); 
       
       let response = await ProductControllerMONGO.getById(prod_id);
       let prod_stock = response.result.stock;
