@@ -1,8 +1,5 @@
 
-document.addEventListener("DOMContentLoaded", () => {     
-  
-  //cartQuantity();    
-  //loadCartProducts();  
+document.addEventListener("DOMContentLoaded", () => {       
 
   let change_qty = document.getElementsByClassName('change_qty');
   for (let i = 0; i < change_qty.length; i++) {
@@ -15,24 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = btn_eliminar[i];
     button.addEventListener('click', deleteProduct)
   }
-  /* document.getElementById('cart_quantity_nav').innerText = data.cantidad; */
-  /* document.getElementById('cart_quantity_subtitle').innerText = `El carrito contiene XXX producto`;   */
-
-  async function cartQuantity(){
-    try {
-      let response = await fetch('/api/carrito/cant');    
-      let data = await response.json();   
-
-      document.getElementById('cart_quantity_nav').innerText = data.cantidad;
-      if(data.cantidad === 1){
-        document.getElementById('cart_quantity_subtitle').innerText = `El carrito contiene ${data.cantidad} producto`;
-      }else{
-        document.getElementById('cart_quantity_subtitle').innerText = `El carrito contiene ${data.cantidad} productos`;
-      } 
-    } catch (error) {
-      console.log(error);
-    }    
-  }    
+  
+  let fin_compra = document.getElementById('fin_compra');
+  fin_compra.addEventListener('click', confirmoCompra)
+  
 
   async function changeQuantity(e) {
     let card_carrito = e.target.parentElement.parentElement.parentElement.parentElement;
@@ -53,28 +36,41 @@ document.addEventListener("DOMContentLoaded", () => {
       'Content-Type': 'application/json; charset=UTF-8'
       } 
     });    
-    let data = await result.json();
+    let data = await result.json();    
+  }
 
-    console.log(data);
+  async function confirmoCompra(e) {
+    e.preventDefault();
+    let cart_cantidad = document.getElementById('cart_cantidad').innerText;
+    cart_cantidad = parseInt( cart_cantidad.replace('Cantidad de Productos:','').trim() );
+
+    if(cart_cantidad > 0) {
+      let cartId = document.getElementsByClassName('id_cart')[0].innerText.trim();    
+  
+      let response = await fetch('/api/compras', {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json'
+        }, 
+        body: JSON.stringify({cartId}) 
+      });
+      let data = await response.json();
+
+      if(data.status === 'OK'){
+        document.getElementsByClassName('products_container')[0].innerHTML = '';
+        document.getElementById('cart_cantidad').innerText = 'Cantidad de Productos: 0';
+        document.getElementById('cart_total').innerText = 'Total de la Compra ($): 0.0';
+        document.getElementById('cart_quantity_subtitle').innerText = 'No tiene productos en el carrito';
+
+        swal(`Gracias ${data.result.user.nombre}`, `Envíamos un correo a ${data.result.user.email} con el detalle de la compra`, "success", {
+          button: "Aceptar",
+        });
+      }
+    } else{
+      swal("No hay productos en el carrito", "No se puede efectuar la compra", "error", {
+        button: "Aceptar",
+      });
+    }
   }
 });
 
-/*
-
-<div class="py-2">
-          <div class="w-full border-2 border-gray-700 p-4 flex items-center space-x-8 rounded-lg">
-            <img class="w-[120px]" src="../images/logo.png" alt="">
-            <div class="w-full px-4">
-              <p class="text-2xl font-bold">Auriculares Gamer</p>
-              <p class="text-xl py-1">Inalambricos</p>
-              <div class="w-full flex items-center justify-between">
-                <p class="text-lg">Precio ($): 1200</p>
-                <div class="flex items-center space-x-4">
-                  <label class="text-lg" for="cantidad">Cantidad:</label>
-                  <input class="text-md w-[55px] text-center" type="number" name="cantidad">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-*/

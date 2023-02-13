@@ -19,8 +19,7 @@ const generateImage = async (req, res) => {
       success: true,
       data: imageUrl
     })    
-  } catch (error) {
-    console.log(error.message);
+  } catch (error) {    
     res.status(400).json({
       success: false,
       msg: 'The image could not be generated'

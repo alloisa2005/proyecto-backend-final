@@ -29,10 +29,10 @@ router.get('/myCompras', async (req, res) => {
 
 router.post('/', async (req, res) => {
 
-  let {userId, cartId} = req.body;
+  let { cartId } = req.body;
 
   try {                
-    let result = await CompraControllerMONGO.newCompra(userId, cartId);      
+    let result = await CompraControllerMONGO.newCompra(req.user._id, cartId);      
     return res.status(200).send(result);          
       
   } catch (error) {

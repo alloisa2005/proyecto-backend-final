@@ -35,8 +35,10 @@ class CompraController {
       let compra = new CompraModel({user: userId, cart: cartId});
       await compra.save();
       await CartModel.findByIdAndUpdate(cartId, {activo: false});
-      
-      return {status:'OK', result: compra}; 
+
+      let newCompra = await CompraModel.findById(compra._id).populate('user');      
+
+      return {status:'OK', result: newCompra}; 
 
     } catch (error) {
       return {status:'ERROR', result: error.message}; 

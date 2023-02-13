@@ -44,7 +44,7 @@
                     <p class="prod_nombre text-xl font-extrabold"> <%= carrito.productos[i].nombre %> </p>
                     <p class="prod_descripcion text-xl py-1 text-white"> <%= carrito.productos[i].descripcion %> </p>
                     <div class="w-full flex items-center justify-between">
-                      <p class="prod_precio text-lg text-white">Precio ($): <%= carrito.productos[i].price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %> </p>
+                      <p class="prod_precio text-lg text-white">Precio ($): <%= carrito.productos[i].price %> </p>
                       <a class="btn_eliminar text-lg text-white hover:text-black hover:scale-110 duration-300" href="#">Eliminar</a>
                       <p class="text-lg text-white" for="cantidad">Cantidad: <span class="text-xl font-bold"><%= carrito.productos[i].quantity %></span></p>                                              
                     </div>
@@ -56,7 +56,7 @@
         </div>        
       </div>
 
-      <!-- Detalle de la compra -->
+      <!-- Detalle de la compra -->      
       <div class="flex-1 p-3 border-2 border-gray-700 rounded-lg h-[70%]">
         <p class="text-center text-xl font-bold uppercase text-white">Detalle de la compra</p>
         <div class="flex items-center justify-around py-6">
@@ -67,9 +67,10 @@
         <div>
           <p id="cart_cantidad" class="text-white text-xl font-bold py-2">Cantidad de Productos: <%= cantidad %></p>
           <p id="cart_total" class="text-white text-xl font-bold py-2">Total de la Compra ($): <%= total %></p>
-          <p class="w-[80%] mx-auto text-center bg-black text-white py-3 mt-3 rounded-lg text-xl font-bold hover:cursor-pointer hover:scale-105 duration-300">Finalizar Compra</p>
+          <p id="fin_compra" class="w-[80%] mx-auto text-center bg-black text-white py-3 mt-3 rounded-lg text-xl font-bold hover:cursor-pointer hover:scale-105 duration-300">Finalizar Compra</p>
         </div>
       </div>
+      
     </div>
   </div>
 

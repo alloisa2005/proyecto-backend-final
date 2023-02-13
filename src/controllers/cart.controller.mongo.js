@@ -49,7 +49,6 @@ class CartController {
       // Si no existe el carrito, lo creo y le agrego el producto elegido
       let subTotal = prod.quantity * prod.price;
       let newCart = await CartModel.create({ userId, productos: prod, subTotal });             
-      console.log(newCart);     
 
       let response = await ProductControllerMONGO.getById(prod_id);
       let prod_stock = response.result.stock;
