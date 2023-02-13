@@ -6,6 +6,7 @@ const CartControllerMONGO = require('../controllers/cart.controller.mongo')
 
 const { enviarWhats } = require('../utils/enviarWhats'); 
 const { isLogged } = require('../middlewares/validaciones')
+const { agregarSepMiles } = require('../utils/funciones')
 
 /**
  * @swagger
@@ -62,8 +63,9 @@ router.get('/', isLogged, async (req, res) => {
   let response = await CartControllerMONGO.getMyCart(req.user);
   let cantidad = response.cantidad;
   let carrito = response.carrito;      
+  let total = agregarSepMiles(response.total);   
 
-  res.render('cart.ejs', { title: 'My Cart', user: req.user, carrito, cantidad }); 
+  res.render('cart.ejs', { title: 'My Cart', user: req.user, carrito, cantidad, total }); 
 })
 
 router.get('/cant', isLogged, async (req, res) => {  

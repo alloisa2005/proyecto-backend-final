@@ -2,23 +2,25 @@ const mongoose = require('mongoose');
 const CartModel = require('../models/Cart.mongo')
 const ProductControllerMONGO = require('./product.controller.mongo')
 
+
 class CartController {
 
   async getMyCart(user) {
     
     try {      
       let result = await CartModel.findOne({user: user.id}) 
-      console.log(result);          
+      //console.log(result);          
       
-      if(!result) return {status:'OK', carrito: { productos: [] }, cantidad: 0};            
+      if(!result) return {status:'OK', carrito: { productos: [] }, cantidad: 0, total: 0};            
 
-      let productos = result.productos;
+      let productos = result.productos;      
+
       let cantidad = 0;
       for (let i = 0; i < productos.length; i++) {
         cantidad += productos[i].quantity;        
       }
 
-      return {status:'OK', carrito: result, cantidad}; 
+      return {status:'OK', carrito: result, cantidad, total: result.subTotal }; 
     } catch (error) {
       return {status:'ERROR', result: error.message};
     }
