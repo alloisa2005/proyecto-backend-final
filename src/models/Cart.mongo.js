@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 
 const cartSchema = mongoose.Schema({
-  user: {type: mongoose.Types.ObjectId, ref: 'User', unique: true},
+  userId: {type: String },
   productos: [{
     product_id: {type: String, required: true},
     quantity: {type: Number, required: true, min: [1, 'Quantity can not be less than 1.'] },

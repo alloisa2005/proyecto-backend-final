@@ -8,7 +8,7 @@ class CartController {
   async getMyCart(user) {
     
     try {      
-      let result = await CartModel.findOne({user: user.id}) 
+      let result = await CartModel.findOne({user: user.id, activo: true}) 
       //console.log(result);          
       
       if(!result) return {status:'OK', carrito: { productos: [] }, cantidad: 0, total: 0};            
@@ -41,23 +41,22 @@ class CartController {
     try {      
 
       let prod_id = prod.product_id.trim();      
+      let cart = await CartModel.findOne({ userId, activo: true });                  
 
-      // Miro si el user ya tiene un carrito creado
-      let cart = await CartModel.findOne({userId});                        
-
-      // Si existe el carrito, le agrego productos
-      if(cart) return await this.addProductToCart(cart._id, prod);                    
-
-      // Sino creo el carrito y le agrego el producto elegido
-      let subTotal = prod.quantity * prod.price;
-      let result = await CartModel.create({user: userId, productos: prod, subTotal}); 
+      // Si existe el carrito le añado el producto elegido
+      if(cart) return await this.addProductToCart(cart._id, prod);
       
+      // Si no existe el carrito, lo creo y le agrego el producto elegido
+      let subTotal = prod.quantity * prod.price;
+      let newCart = await CartModel.create({ userId, productos: prod, subTotal });             
+      console.log(newCart);     
+
       let response = await ProductControllerMONGO.getById(prod_id);
       let prod_stock = response.result.stock;
       prod_stock-= 1;
-      let jaja = await ProductControllerMONGO.editProduct(prod_id, {stock: prod_stock})      
+      await ProductControllerMONGO.editProduct(prod_id, {stock: prod_stock})  
 
-      return {status:'OK', result};
+      return {status:'OK', prod_id };
     } catch (error) {
       return {status:'ERROR', result: error.message};
     }
@@ -142,3 +141,37 @@ class CartController {
 }
 
 module.exports = new CartController();
+
+
+
+/*
+
+try {      
+
+      let prod_id = prod.product_id.trim();      
+
+      // Miro si el user ya tiene un carrito creado
+      let cart = await CartModel.findOne({userId, activo: true });                              
+      console.log(cart)
+
+      // Si existe el carrito, le agrego productos
+      if(cart) return await this.addProductToCart(cart._id, prod);                    
+      console.log('NULL CART');
+
+      // Sino creo el carrito y le agrego el producto elegido
+      let subTotal = prod.quantity * prod.price;
+      let newCart = new CartModel({user: userId, productos: prod, subTotal});
+      console.log(newCart);
+      await newCart.save();
+      //let result = await CartModel.create({user: userId, productos: prod, subTotal});       
+
+      let response = await ProductControllerMONGO.getById(prod_id);
+      let prod_stock = response.result.stock;
+      prod_stock-= 1;
+      let jaja = await ProductControllerMONGO.editProduct(prod_id, {stock: prod_stock})      
+
+      return {status:'OK', result};
+    } catch (error) {
+      return {status:'ERROR', result: error.message};
+    }
+*/
