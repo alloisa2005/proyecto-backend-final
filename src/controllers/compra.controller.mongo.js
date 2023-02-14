@@ -21,7 +21,7 @@ class CompraController {
 
     try {
 
-      let result = await CompraModel.find({user: userId}).populate('user').populate('cart')
+      let result = await CompraModel.find({user: userId}).populate('cart')
       return {status:'OK', result};             
 
     } catch (error) {

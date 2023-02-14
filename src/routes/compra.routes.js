@@ -25,7 +25,7 @@ router.get('/myCompras', async (req, res) => {
     if(misCompras.result.length !== 0) {
       compras = misCompras.result;
     } 
-    console.log(misCompras.result);
+    console.log(compras);
 
     res.render('compras.ejs', { title: 'My Cart', user: req.user, compras });
 
