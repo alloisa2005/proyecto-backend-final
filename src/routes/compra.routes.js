@@ -16,12 +16,18 @@ router.get('/', async (req, res) => {
 
 router.get('/myCompras', async (req, res) => {
   
-  let { userId } = req.body;
+  //let { userId } = req.body;
 
   try {                    
-    let result = await CompraControllerMONGO.getMyCompras(userId);      
-    //return res.status(200).send(result);          
-    res.render('compras.ejs', { title: 'My Cart', user: req.user });
+    let compras = [];
+    let misCompras = await CompraControllerMONGO.getMyCompras(req.user._id);          
+    
+    if(misCompras.result.length !== 0) {
+      compras = misCompras.result;
+    } 
+    console.log(misCompras.result);
+
+    res.render('compras.ejs', { title: 'My Cart', user: req.user, compras });
 
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
