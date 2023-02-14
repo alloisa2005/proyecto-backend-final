@@ -20,8 +20,9 @@ router.get('/myCompras', async (req, res) => {
 
   try {                    
     let result = await CompraControllerMONGO.getMyCompras(userId);      
-    return res.status(200).send(result);          
-      
+    //return res.status(200).send(result);          
+    res.render('compras.ejs', { title: 'My Cart', user: req.user });
+
   } catch (error) {
     res.status(404).send({status:'ERROR', result: error.message}); 
   } 
